@@ -18,3 +18,7 @@
 CTF Writeup
     
     。对比赛题目（Pwn，Web，Reverse）的解题报告
+    
+mind Mapping
+     
+     。学习二进制过程中做的思维导图
