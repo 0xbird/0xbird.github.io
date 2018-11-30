@@ -15,6 +15,6 @@
     
     。实现一些安全工具开发，熟悉安全产品工作的本质原理
 
-CTF
+CTF Writeup
     
     。对比赛题目（Pwn，Web，Reverse）的解题报告
