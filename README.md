@@ -21,4 +21,4 @@ CTF Writeup
     
 mind Mapping
      
-     。学习二进制过程中做的思维导图
+    。学习二进制过程中做的思维导图
