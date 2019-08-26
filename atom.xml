@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://godweiyang.com/"/>
-  <updated>2019-08-26T16:54:08.055Z</updated>
+  <updated>2019-08-26T16:03:29.283Z</updated>
   <id>https://godweiyang.com/</id>
   
   <author>
@@ -15,32 +15,6 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
-  
-  <entry>
-    <title>python基础</title>
-    <link href="https://godweiyang.com/2018/01/22/2.python3-ji-chu-pan-duan-xun-huan/"/>
-    <id>https://godweiyang.com/2018/01/22/2.python3-ji-chu-pan-duan-xun-huan/</id>
-    <published>2018-01-22T04:32:09.000Z</published>
-    <updated>2019-08-26T16:54:08.055Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;div align=&quot;middle&quot;&gt;&lt;iframe frameborder=&quot;no&quot; border=&quot;0&quot; marginwidth=&quot;0&quot; marginheight=&quot;0&quot; width=&quot;330&quot; height=&quot;86&quot;
-        
-      
-    
-    </summary>
-    
-      <category term="python3" scheme="https://godweiyang.com/categories/python3/"/>
-    
-    
-      <category term="python" scheme="https://godweiyang.com/tags/python/"/>
-    
-  </entry>
   
   <entry>
     <title>二零一七年终总结</title>
@@ -65,6 +39,32 @@
     
     
       <category term="随笔" scheme="https://godweiyang.com/tags/%E9%9A%8F%E7%AC%94/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>python基础</title>
+    <link href="https://godweiyang.com/2018/01/22/aaaaaaaaaaaaaaa/"/>
+    <id>https://godweiyang.com/2018/01/22/aaaaaaaaaaaaaaa/</id>
+    <published>2018-01-22T04:32:09.000Z</published>
+    <updated>2019-08-26T16:54:08.055Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;div align=&quot;middle&quot;&gt;&lt;iframe frameborder=&quot;no&quot; border=&quot;0&quot; marginwidth=&quot;0&quot; marginheight=&quot;0&quot; width=&quot;330&quot; height=&quot;86&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="python3" scheme="https://godweiyang.com/categories/python3/"/>
+    
+    
+      <category term="python" scheme="https://godweiyang.com/tags/python/"/>
     
   </entry>
   
