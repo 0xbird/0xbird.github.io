@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://godweiyang.com/"/>
-  <updated>2019-08-26T16:03:29.283Z</updated>
+  <updated>2019-08-26T17:24:07.480Z</updated>
   <id>https://godweiyang.com/</id>
   
   <author>
@@ -15,6 +15,20 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>article title</title>
+    <link href="https://godweiyang.com/2019/08/27/article-title/"/>
+    <id>https://godweiyang.com/2019/08/27/article-title/</id>
+    <published>2019-08-26T17:24:07.000Z</published>
+    <updated>2019-08-26T17:24:07.480Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>二零一七年终总结</title>
