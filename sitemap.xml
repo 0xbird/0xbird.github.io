@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://godweiyang.com/about/index.html</loc>
+    
+    <lastmod>2019-08-26T16:31:24.034Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://godweiyang.com/friends/index.html</loc>
     
     <lastmod>2019-08-26T16:03:29.290Z</lastmod>
@@ -33,13 +40,6 @@
     <loc>https://godweiyang.com/archives/index.html</loc>
     
     <lastmod>2019-08-26T16:03:29.288Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://godweiyang.com/about/index.html</loc>
-    
-    <lastmod>2019-08-26T16:03:29.287Z</lastmod>
     
   </url>
   
