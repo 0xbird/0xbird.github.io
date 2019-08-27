@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://0xbird.top/"/>
-  <updated>2019-08-26T16:03:29.283Z</updated>
+  <updated>2019-08-27T07:20:01.887Z</updated>
   <id>https://0xbird.top/</id>
   
   <author>
@@ -17,37 +17,11 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>二零一七年终总结</title>
-    <link href="https://0xbird.top/2018/01/22/2017-conclusion/"/>
-    <id>https://0xbird.top/2018/01/22/2017-conclusion/</id>
-    <published>2018-01-22T04:32:09.000Z</published>
-    <updated>2019-08-26T16:03:29.283Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;div align=&quot;middle&quot;&gt;&lt;iframe frameborder=&quot;no&quot; border=&quot;0&quot; marginwidth=&quot;0&quot; marginheight=&quot;0&quot; width=&quot;330&quot; height=&quot;86&quot;
-        
-      
-    
-    </summary>
-    
-      <category term="随笔" scheme="https://0xbird.top/categories/%E9%9A%8F%E7%AC%94/"/>
-    
-    
-      <category term="随笔" scheme="https://0xbird.top/tags/%E9%9A%8F%E7%AC%94/"/>
-    
-  </entry>
-  
-  <entry>
     <title>使用AFL对Linux内核Fuzzing的总结</title>
-    <link href="https://0xbird.top/2018/01/22/article-title/"/>
-    <id>https://0xbird.top/2018/01/22/article-title/</id>
+    <link href="https://0xbird.top/2018/01/22/shi-yong-afl-dui-linux-nei-he-fuzzing-de-zong-jie/"/>
+    <id>https://0xbird.top/2018/01/22/shi-yong-afl-dui-linux-nei-he-fuzzing-de-zong-jie/</id>
     <published>2018-01-22T04:32:09.000Z</published>
-    <updated>2019-08-27T07:18:59.714Z</updated>
+    <updated>2019-08-27T07:20:01.887Z</updated>
     
     <summary type="html">
     
@@ -62,6 +36,8 @@
     </summary>
     
       <category term="漏洞挖掘" scheme="https://0xbird.top/categories/%E6%BC%8F%E6%B4%9E%E6%8C%96%E6%8E%98/"/>
+    
+      <category term="Vul" scheme="https://0xbird.top/categories/%E6%BC%8F%E6%B4%9E%E6%8C%96%E6%8E%98/Vul/"/>
     
     
       <category term="Fuzzing" scheme="https://0xbird.top/tags/Fuzzing/"/>
