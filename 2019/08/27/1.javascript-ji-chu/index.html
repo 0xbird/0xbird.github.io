@@ -454,14 +454,14 @@ null &amp;amp; ">
                 
                 <div class="info-break-policy">
                     <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    6.2k
+                    5.9k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    24 分
+                    23 分
                 </div>
                 
                 
@@ -501,44 +501,47 @@ null &amp;amp; ">
 <li>主要用来向 HTML 页面添加交互行为。</li>
 </ul>
 <h2 id="JavaScript-范例"><a href="#JavaScript-范例" class="headerlink" title="JavaScript 范例"></a>JavaScript 范例</h2><p>新建一个 test.html 文件</p>
-<pre><code>&lt;!DOCTYPE html&gt;
-&lt;html&gt;
-    &lt;head&gt;
-        &lt;meta charset=&quot;UTF-8&quot;&gt;
-        &lt;title&gt;&lt;/title&gt;
-    &lt;/head&gt;
-    &lt;body&gt;
-        &lt;script&gt;
-            console.log(&quot;hello world&quot;);
-        &lt;/script&gt;
-    &lt;/body&gt;
-&lt;/html&gt;</code></pre><p>通过上面的代码，我们可以看出 JavaScript 代码是放在<script> ……</script> 标签里，而包含 JavaScript 代码的 script 标签，我们可以放在 <body> ……</body>标签里，也可以放在<head><meta name="generator" content="Hexo 3.9.0"> ……<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
+<pre class="line-numbers language-javascript"><code class="language-javascript"><span class="token operator">&lt;</span><span class="token operator">!</span>DOCTYPE html<span class="token operator">></span>
+<span class="token operator">&lt;</span>html<span class="token operator">></span>
+    <span class="token operator">&lt;</span>head<span class="token operator">></span>
+        <span class="token operator">&lt;</span>meta charset<span class="token operator">=</span><span class="token string">"UTF-8"</span><span class="token operator">></span>
+        <span class="token operator">&lt;</span>title<span class="token operator">></span><span class="token operator">&lt;</span><span class="token operator">/</span>title<span class="token operator">></span>
+    <span class="token operator">&lt;</span><span class="token operator">/</span>head<span class="token operator">></span>
+    <span class="token operator">&lt;</span>body<span class="token operator">></span>
+        <span class="token operator">&lt;</span>script<span class="token operator">></span>
+            console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"hello world"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token operator">&lt;</span><span class="token operator">/</span>script<span class="token operator">></span>
+    <span class="token operator">&lt;</span><span class="token operator">/</span>body<span class="token operator">></span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>html<span class="token operator">></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>通过上面的代码，我们可以看出 JavaScript 代码是放在<script> ……</script> 标签里，而包含 JavaScript 代码的 script 标签，我们可以放在 <body> ……</body>标签里，也可以放在<head><meta name="generator" content="Hexo 3.9.0"> ……<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
 <link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>标签里。比如上述范例也可以这样写：</p>
-<pre><code>&lt;!DOCTYPE html&gt;
-&lt;html&gt;
-    &lt;head&gt;
-        &lt;meta charset=&quot;UTF-8&quot;&gt;
-        &lt;title&gt;&lt;/title&gt;
-        &lt;script&gt;
-            console.log(&quot;hello world&quot;);
-        &lt;/script&gt;
-    &lt;/head&gt;
-    &lt;body&gt;    
-    &lt;/body&gt;
-&lt;/html&gt;</code></pre><p>执行结果没有什么区别，不同的是执行顺序，简单的来说，放在前面的会先执行。此外，和 CSS 引入相类似，JavaScript 也可以通过外部引入。首先我们需要创建一个扩展名为 .js 的文件，然后在 html 页面中引入它，同样的拿上述范例来修改，我们首先创建一个叫 test.js (名字自己取，但是扩展名一定要是 .js,只有这样才能够识别 JavaScript 代码)的文件，然后在里面写上我们的 JavaScript 代码：</p>
+<pre class="line-numbers language-javascript"><code class="language-javascript"><span class="token operator">&lt;</span><span class="token operator">!</span>DOCTYPE html<span class="token operator">></span>
+<span class="token operator">&lt;</span>html<span class="token operator">></span>
+    <span class="token operator">&lt;</span>head<span class="token operator">></span>
+        <span class="token operator">&lt;</span>meta charset<span class="token operator">=</span><span class="token string">"UTF-8"</span><span class="token operator">></span>
+        <span class="token operator">&lt;</span>title<span class="token operator">></span><span class="token operator">&lt;</span><span class="token operator">/</span>title<span class="token operator">></span>
+        <span class="token operator">&lt;</span>script<span class="token operator">></span>
+            console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"hello world"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token operator">&lt;</span><span class="token operator">/</span>script<span class="token operator">></span>
+    <span class="token operator">&lt;</span><span class="token operator">/</span>head<span class="token operator">></span>
+    <span class="token operator">&lt;</span>body<span class="token operator">></span>    
+    <span class="token operator">&lt;</span><span class="token operator">/</span>body<span class="token operator">></span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>html<span class="token operator">></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>执行结果没有什么区别，不同的是执行顺序，简单的来说，放在前面的会先执行。此外，和 CSS 引入相类似，JavaScript 也可以通过外部引入。首先我们需要创建一个扩展名为 .js 的文件，然后在 html 页面中引入它，同样的拿上述范例来修改，我们首先创建一个叫 test.js (名字自己取，但是扩展名一定要是 .js,只有这样才能够识别 JavaScript 代码)的文件，然后在里面写上我们的 JavaScript 代码：</p>
 <pre><code>console.log(&quot;hello world&quot;);</code></pre><p>在 html 文件中写上如下代码：</p>
-<pre><code>&lt;!DOCTYPE html&gt;
-&lt;html&gt;
-    &lt;head&gt;
-        &lt;meta charset=&quot;UTF-8&quot;&gt;
-        &lt;title&gt;&lt;/title&gt;
-    &lt;/head&gt;
-    &lt;body&gt;
-        &lt;script src=&quot;test.js&quot;&gt;
+<pre class="line-numbers language-javascript"><code class="language-javascript"><span class="token operator">&lt;</span><span class="token operator">!</span>DOCTYPE html<span class="token operator">></span>
+<span class="token operator">&lt;</span>html<span class="token operator">></span>
+    <span class="token operator">&lt;</span>head<span class="token operator">></span>
+        <span class="token operator">&lt;</span>meta charset<span class="token operator">=</span><span class="token string">"UTF-8"</span><span class="token operator">></span>
+        <span class="token operator">&lt;</span>title<span class="token operator">></span><span class="token operator">&lt;</span><span class="token operator">/</span>title<span class="token operator">></span>
+    <span class="token operator">&lt;</span><span class="token operator">/</span>head<span class="token operator">></span>
+    <span class="token operator">&lt;</span>body<span class="token operator">></span>
+        <span class="token operator">&lt;</span>script src<span class="token operator">=</span><span class="token string">"test.js"</span><span class="token operator">></span>
 
-        &lt;/script&gt;
-    &lt;/body&gt;
-&lt;/html&gt;</code></pre><p>值得注意的是 test.js 文件要和你的 html 文件在同一目录下才能用上面的方式引用，否则的话需要使用相对路径还是绝对路径来引入 js 文件，就需要根据实际情况灵活运用了。前两种方式都是直接把 JavaScript 代码放在 HTML 中，在页面加载的同时，那些 JavaScript 的代码就被解析了。而把 JavaScript 代码放在外部文件中，只有在事件被触发，需要该段 JavaScript 代码时，才调用执行。这样做有个好处，当页面比较复杂的时候，把大量的 JavaScript 代码放到外部文件，只有在需要的时候才执行，那么会明显地加快页面加载速度，而且实现结构化分离，也便于我们维护自己的代码，所以建议大家养成外部引入的方式来写我们的 JavaScript 代码。</p>
+        <span class="token operator">&lt;</span><span class="token operator">/</span>script<span class="token operator">></span>
+    <span class="token operator">&lt;</span><span class="token operator">/</span>body<span class="token operator">></span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>html<span class="token operator">></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>值得注意的是 test.js 文件要和你的 html 文件在同一目录下才能用上面的方式引用，否则的话需要使用相对路径还是绝对路径来引入 js 文件，就需要根据实际情况灵活运用了。前两种方式都是直接把 JavaScript 代码放在 HTML 中，在页面加载的同时，那些 JavaScript 的代码就被解析了。而把 JavaScript 代码放在外部文件中，只有在事件被触发，需要该段 JavaScript 代码时，才调用执行。这样做有个好处，当页面比较复杂的时候，把大量的 JavaScript 代码放到外部文件，只有在需要的时候才执行，那么会明显地加快页面加载速度，而且实现结构化分离，也便于我们维护自己的代码，所以建议大家养成外部引入的方式来写我们的 JavaScript 代码。</p>
 <h2 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h2><h4 id="变量是什么"><a href="#变量是什么" class="headerlink" title="变量是什么"></a>变量是什么</h4><p>在计算机中，数据都存在内存中。而一个变量，就是一个用于存放数值的容器，每个变量存放的数值是可变的，每个变量都有其独有的名字，每个变量都占有一段内存。</p>
 <p>注：变量不是数值本身，变量仅仅是一个用于储存数值的容器。</p>
 <h4 id="声明变量"><a href="#声明变量" class="headerlink" title="声明变量"></a>声明变量</h4><p>通过 var 关键字来声明变量，比如：</p>
@@ -588,48 +591,52 @@ console.log(name, age);
 <p>注：我们这里作为了解就可以了。因为和其他语言不同的是，在 JavaScript 中，不管什么数字类型的通通用 var 声明就可以了，而且 JavaScript 中只有一个数据类型:Number。</p>
 <h4 id="算数运算符"><a href="#算数运算符" class="headerlink" title="算数运算符"></a>算数运算符</h4><p><img src="/2019/08/27/1/1566899363039.png" alt></p>
 <p>加减乘除的运算和我们平时所用的差不多，大家可以自行在控制台中尝试。这里需要提醒大家的是累加运算和累减运算的用法:</p>
-<p><img src="/2019/08/27/1/1566899404800.png" alt="1566899404800"></p>
+<p><img src="/2019/08/27/1/1566899404800.png" alt></p>
 <p>从上述的图片中可以看出我们不能将这些直接应用于一个数字，不是对值进行操作，而是为变量赋值一个新的更新值。num++ 其实是 num = num + 1 的省略写法。从图片上来看可能不好理解 num++ 和 ++num 的区别。我们来写一个例子：</p>
-<pre><code>var num1 = 3;
-var result1 = num1++;
-console.log(result1);
-console.log(num1);
-var num2 = 4;
-var result2 = ++num2;
-console.log(result2);
-console.log(num2);
-</code></pre><p>最后控制台打印的数字为：3 4 5 5。这里我们也可以看出 num++ 和 ++num 的区别，前者是先赋值再自增，后者是先自增再赋值。同样的 num– 和 –num 也是一样的效果，大家可以自行尝试一下。</p>
-<h4 id="操作运算符"><a href="#操作运算符" class="headerlink" title="操作运算符"></a>操作运算符</h4><p><img src="/2019/08/27/1/1566899435300.png" alt="1566899435300"></p>
-<h4 id="比较运算符"><a href="#比较运算符" class="headerlink" title="比较运算符"></a>比较运算符</h4><p><img src="https://doc.shiyanlou.com/document-uid897174labid9222timestamp1547024508797.png/wm" alt="img"></p>
+<pre class="line-numbers language-javascript"><code class="language-javascript"><span class="token keyword">var</span> num1 <span class="token operator">=</span> <span class="token number">3</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> result1 <span class="token operator">=</span> num1<span class="token operator">++</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>result1<span class="token punctuation">)</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>num1<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> num2 <span class="token operator">=</span> <span class="token number">4</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> result2 <span class="token operator">=</span> <span class="token operator">++</span>num2<span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>result2<span class="token punctuation">)</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>num2<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>最后控制台打印的数字为：3 4 5 5。这里我们也可以看出 num++ 和 ++num 的区别，前者是先赋值再自增，后者是先自增再赋值。同样的 num– 和 –num 也是一样的效果，大家可以自行尝试一下。</p>
+<h4 id="操作运算符"><a href="#操作运算符" class="headerlink" title="操作运算符"></a>操作运算符</h4><p><img src="/2019/08/27/1/1566899435300.png" alt></p>
+<h4 id="比较运算符"><a href="#比较运算符" class="headerlink" title="比较运算符"></a>比较运算符</h4><p><img src="/2019/08/27/1/1566901057367.png" alt></p>
 <p>在控制台中输入这些示例，如果成立的话会返回 true 如果不成立的话则返回 false。</p>
-<h4 id="逻辑运算符"><a href="#逻辑运算符" class="headerlink" title="逻辑运算符"></a>逻辑运算符</h4><p><img src="https://doc.shiyanlou.com/document-uid18510labid147timestamp1515116985209.png/wm" alt="img"></p>
-<h4 id="运算符的优先级"><a href="#运算符的优先级" class="headerlink" title="运算符的优先级"></a>运算符的优先级</h4><p><img src="https://doc.shiyanlou.com/document-uid897174labid9222timestamp1547261443500.png/wm" alt="img"></p>
+<h4 id="逻辑运算符"><a href="#逻辑运算符" class="headerlink" title="逻辑运算符"></a>逻辑运算符</h4><p><img src="/2019/08/27/1/1566900052814.png" alt></p>
+<h4 id="运算符的优先级"><a href="#运算符的优先级" class="headerlink" title="运算符的优先级"></a>运算符的优先级</h4><p><img src="/2019/08/27/1/1566901074842.png" alt></p>
 <h2 id="数组（概述，方法）"><a href="#数组（概述，方法）" class="headerlink" title="数组（概述，方法）"></a>数组（概述，方法）</h2><p>数组是多数编程语言都具有的数据类型，JavaScript 也不例外，接下来让我们一起来学习 JavaScript 数组的定义和相关操作。</p>
 <h3 id="数组概述"><a href="#数组概述" class="headerlink" title="数组概述"></a>数组概述</h3><p>通过我们前面所学的我们可以知道如果我们要保存一个数据，我们可以用 var 关键字去定义一个变量，但是如果数据很多呢？难道我需要一个个去定义？比如一个班上很多人，我们 var name1 = “张三”;var name2 = “李四”;…一直这样定义下去？显然这是不科学的，而这也由此引出了我们的数组。首先我们来看看维基百科对于数组的定义：</p>
 <blockquote>
 <p>在计算机科学中，数组数据结构（英语：array data structure），简称数组（英语：Array），是由相同类型的元素（element）的集合所组成的数据结构，分配一块连续的内存来存储。利用元素的索引（index）可以计算出该元素对应的存储地址。</p>
 </blockquote>
 <p>最简单的数据结构类型是一维数组。例如，索引为 0 到 9 的 32 位整数数组，可作为在存储器地址2000，2004，2008，…2036中，存储10个变量，因此索引为 i 的元素即在存储器中的 2000+4×i 地址。数组第一个元素的存储器地址称为第一地址或基础地址。</p>
-<h4 id="数组语法"><a href="#数组语法" class="headerlink" title="数组语法"></a>数组语法</h4><pre><code>var myarray = new Array(1,2,3,4,5); // 创建数组同时赋值
+<h4 id="数组语法"><a href="#数组语法" class="headerlink" title="数组语法"></a>数组语法</h4><pre class="line-numbers language-javascript"><code class="language-javascript"><span class="token keyword">var</span> myarray <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Array</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">,</span><span class="token number">4</span><span class="token punctuation">,</span><span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 创建数组同时赋值</span>
 
-//or
+<span class="token comment" spellcheck="true">//or</span>
 
-var myarray = [1,2,3,4,5]; //直接输入一个数组（称 “字面量数组”）
-</code></pre><p>注：我们可以用上述两种方法创建数组，myarray 指的是定义的数组名，可以自己取，数组储存的的数据可以是任何类型（数字，字符，布尔值等）。每一个值都有一个索引值，从 0 开始。比如：</p>
-<pre><code>var color = [&quot;red&quot;,&quot;green&quot;,&quot;blue&quot;,&quot;yellow&quot;];
-color[0]; // returns &quot;red&quot;
-color[1]; // returns &quot;green&quot;
-color[2]; // returns &quot;blue&quot;
-color[3]; // returns &quot;yellow&quot;
-color[4]; // returns undefined
-</code></pre><h4 id="多维数组"><a href="#多维数组" class="headerlink" title="多维数组"></a>多维数组</h4><p>多维数组就是数组中还包含数组，我们可以一层一层的来看。比如：</p>
+<span class="token keyword">var</span> myarray <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">,</span><span class="token number">4</span><span class="token punctuation">,</span><span class="token number">5</span><span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//直接输入一个数组（称 “字面量数组”）</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>注：我们可以用上述两种方法创建数组，myarray 指的是定义的数组名，可以自己取，数组储存的的数据可以是任何类型（数字，字符，布尔值等）。每一个值都有一个索引值，从 0 开始。比如：</p>
+<pre class="line-numbers language-javascript"><code class="language-javascript"><span class="token keyword">var</span> color <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">"red"</span><span class="token punctuation">,</span><span class="token string">"green"</span><span class="token punctuation">,</span><span class="token string">"blue"</span><span class="token punctuation">,</span><span class="token string">"yellow"</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+color<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// returns "red"</span>
+color<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// returns "green"</span>
+color<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// returns "blue"</span>
+color<span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// returns "yellow"</span>
+color<span class="token punctuation">[</span><span class="token number">4</span><span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// returns undefined</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h4 id="多维数组"><a href="#多维数组" class="headerlink" title="多维数组"></a>多维数组</h4><p>多维数组就是数组中还包含数组，我们可以一层一层的来看。比如：</p>
 <pre><code>var student = [[&quot;张三&quot;,&quot;男&quot;,&quot;18&quot;],[&quot;李四&quot;,&quot;女&quot;,&quot;20&quot;]];
 student[0][2]; // returns &quot;18&quot;
 </code></pre><h3 id="操作数组"><a href="#操作数组" class="headerlink" title="操作数组"></a>操作数组</h3><h4 id="修改数组"><a href="#修改数组" class="headerlink" title="修改数组"></a>修改数组</h4><p>修改数组中的元素内容也很简单，直接为它提供新值就可以了。比如：</p>
-<pre><code>var color = [&quot;red&quot;,&quot;green&quot;,&quot;blue&quot;,&quot;yellow&quot;];
-color[0] = &quot;black&quot;;
-color; // returns  [&quot;black&quot;, &quot;green&quot;, &quot;blue&quot;, &quot;yellow&quot;]
-</code></pre><h4 id="获取数组长度"><a href="#获取数组长度" class="headerlink" title="获取数组长度"></a>获取数组长度</h4><p>同样的我们使用 length 来获取数组的长度。比如：</p>
+<pre class="line-numbers language-javascript"><code class="language-javascript"><span class="token keyword">var</span> color <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">"red"</span><span class="token punctuation">,</span><span class="token string">"green"</span><span class="token punctuation">,</span><span class="token string">"blue"</span><span class="token punctuation">,</span><span class="token string">"yellow"</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+color<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token string">"black"</span><span class="token punctuation">;</span>
+color<span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// returns  ["black", "green", "blue", "yellow"]</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<h4 id="获取数组长度"><a href="#获取数组长度" class="headerlink" title="获取数组长度"></a>获取数组长度</h4><p>同样的我们使用 length 来获取数组的长度。比如：</p>
 <pre><code>var color = [&quot;red&quot;,&quot;green&quot;,&quot;blue&quot;,&quot;yellow&quot;];
 color.length; // returns 4
 </code></pre><h4 id="数组和字符串之间的转换"><a href="#数组和字符串之间的转换" class="headerlink" title="数组和字符串之间的转换"></a>数组和字符串之间的转换</h4><p>通过 split() 方法，将字符串转换为数组。比如：</p>
@@ -644,22 +651,24 @@ color.length; // returns 4
 arr.push(&quot;5&quot;,&quot;6&quot;);
 arr; // returns [&quot;1&quot;, &quot;2&quot;, &quot;3&quot;, &quot;4&quot;, &quot;5&quot;, &quot;6&quot;]
 </code></pre><p>使用 pop() 方法将删除数组的最后一个元素，把数组长度减 1，并且返回它删除的元素的值。如果数组已经为空，则 pop() 不改变数组，然后返回 undefined 值。比如：</p>
-<pre><code>var arr = [&quot;1&quot;, &quot;2&quot;, &quot;3&quot;, &quot;4&quot;];
-arr.pop(); //returns 4
-arr; // returns [&quot;1&quot;, &quot;2&quot;, &quot;3&quot;]
-var arr1 = [];
-arr1.pop(); //returns undefined
-arr1; //returns []
-</code></pre><p>unshift() 和 shift() 从功能上与 push() 和 pop() 完全相同，只是它们分别作用于数组的开始，而不是结尾。大家可以直接在控制台自行尝试一番。</p>
+<pre class="line-numbers language-javascript"><code class="language-javascript"><span class="token keyword">var</span> arr <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">"1"</span><span class="token punctuation">,</span> <span class="token string">"2"</span><span class="token punctuation">,</span> <span class="token string">"3"</span><span class="token punctuation">,</span> <span class="token string">"4"</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+arr<span class="token punctuation">.</span><span class="token function">pop</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//returns 4</span>
+arr<span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// returns ["1", "2", "3"]</span>
+<span class="token keyword">var</span> arr1 <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+arr1<span class="token punctuation">.</span><span class="token function">pop</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//returns undefined</span>
+arr1<span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//returns []</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>unshift() 和 shift() 从功能上与 push() 和 pop() 完全相同，只是它们分别作用于数组的开始，而不是结尾。大家可以直接在控制台自行尝试一番。</p>
 <h2 id="Null-和-Undefined"><a href="#Null-和-Undefined" class="headerlink" title="Null 和 Undefined"></a>Null 和 Undefined</h2><p>null 和 undefined 都表示无,但是也有一些区别。现在控制台上执行以下语句：</p>
-<p><img src="https://doc.shiyanlou.com/document-uid897174labid9222timestamp1547019784085.png/wm" alt="img"></p>
+<p><img src="/2019/08/27/1/1566901102698.png" alt></p>
 <p>这里需要说明的是：== 是相等操作符,比较值是否相等，如果相等输出为 true，否则为 false。=== 是全等操作符,比较值和类型是否都相等，如果都相等输出为 true，否则为 false。通过我们在控制台中的实践可以发现，null 和 undefined 的值不等于 0，它们的值相等，但是类型不相等。undefined 表示所有没有赋值变量的默认值，而 null 则表示一个变量不再指向任何对象地址。</p>
 <h2 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h2><p>在前面的变量章节中，我们已经简单讲过字符串的基础知识，这里我们再拓展一下。我们前面讲过我们可以使用单引号或双引号，也可以在字符串中使用引号，只要不匹配包围字符串的引号即可。比如：</p>
-<pre><code>var carname= &quot;shiyanlou&quot;;
-var carname= &#39;shiyanlou&#39;;
-var answer= &quot;I Love &#39;shiyanlou&#39;&quot;;
-var answer= &#39;I Love &quot;shiyanlou&quot;&#39;;
-</code></pre><p>下面的代码将会出现错误，因为它会混淆浏览器和字符串的结束位置:</p>
+<pre class="line-numbers language-javascript"><code class="language-javascript"><span class="token keyword">var</span> carname<span class="token operator">=</span> <span class="token string">"shiyanlou"</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> carname<span class="token operator">=</span> <span class="token string">'shiyanlou'</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> answer<span class="token operator">=</span> <span class="token string">"I Love 'shiyanlou'"</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> answer<span class="token operator">=</span> <span class="token string">'I Love "shiyanlou"'</span><span class="token punctuation">;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<p>下面的代码将会出现错误，因为它会混淆浏览器和字符串的结束位置:</p>
 <pre><code>var x1 = &#39;I&#39;ve got no right to take my place...&#39;;
 </code></pre><p>聪明的你可能会觉得这样不行，我们就换种方法嘛，比如：</p>
 <pre><code>var x1 = &#39;I have got no right to take my place...&#39;;
@@ -668,26 +677,30 @@ var answer= &#39;I Love &quot;shiyanlou&quot;&#39;;
 </code></pre><p>没错这样做都是可行的方法，但是其实我们还有另外一种方法，使用转义符号。转义字符意味着我们对它们做一些事情，以确保它们在文本中被认可，而不是代码的一部分。在 JavaScript 中，我们通过在字符之前放一个反斜杠来实现这一点。试试这个:</p>
 <pre><code>var x1 = &#39;I\&#39;ve got no right to take my place...&#39;;
 </code></pre><p>常用的转义符：</p>
-<p><img src="https://doc.shiyanlou.com/document-uid897174labid9222timestamp1547519780285.png/wm" alt="img"></p>
+<p><img src="/2019/08/27/1/1566901117702.png" alt></p>
 <h4 id="连接字符串"><a href="#连接字符串" class="headerlink" title="连接字符串"></a>连接字符串</h4><p>我们通过 “+” 连接字符串，比如在控制台中输入下面的代码：</p>
-<pre><code>var one = &quot;Hello,jack.&quot;;
-var two = &quot;I&#39;m rose&quot;;
-result = one + two;
-</code></pre><p>最后控制台显示结果为：”Hello,jack.I’m rose”。</p>
+<pre class="line-numbers language-javascript"><code class="language-javascript"><span class="token keyword">var</span> one <span class="token operator">=</span> <span class="token string">"Hello,jack."</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> two <span class="token operator">=</span> <span class="token string">"I'm rose"</span><span class="token punctuation">;</span>
+result <span class="token operator">=</span> one <span class="token operator">+</span> two<span class="token punctuation">;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<p>最后控制台显示结果为：”Hello,jack.I’m rose”。</p>
 <p>如果我们在控制台输入的是 “jack”+18 思考一下会报错吗？要不再自己动手实践看看结果？结果是：浏览器很聪明的把数字转换成了字符串，最后结果为”jack18”。另外输入 “20”+”19”，最后的结果也是字符串”2019”。</p>
 <h4 id="字符串转换"><a href="#字符串转换" class="headerlink" title="字符串转换"></a>字符串转换</h4><p>我们可以通过 toString 方法把数字转换成字符串。</p>
-<pre><code>var myNum = 123;
-var myString = myNum.toString();
-typeof myString;
-</code></pre><p>也可以通过 Number 对象把传递给它的字符串类型的数字转换为数字。</p>
-<pre><code>var myString = &#39;123&#39;;
-var myNum = Number(myString);
-typeof myNum;
-</code></pre><p>注：如果传递的不是纯数字的字符串，则返回的不是数字，而是 NaN（not a number）。</p>
+<pre class="line-numbers language-javascript"><code class="language-javascript"><span class="token keyword">var</span> myNum <span class="token operator">=</span> <span class="token number">123</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> myString <span class="token operator">=</span> myNum<span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">typeof</span> myString<span class="token punctuation">;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<p>也可以通过 Number 对象把传递给它的字符串类型的数字转换为数字。</p>
+<pre class="line-numbers language-javascript"><code class="language-javascript"><span class="token keyword">var</span> myString <span class="token operator">=</span> <span class="token string">'123'</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> myNum <span class="token operator">=</span> <span class="token function">Number</span><span class="token punctuation">(</span>myString<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">typeof</span> myNum<span class="token punctuation">;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<p>注：如果传递的不是纯数字的字符串，则返回的不是数字，而是 NaN（not a number）。</p>
 <h4 id="获取字符串的长度"><a href="#获取字符串的长度" class="headerlink" title="获取字符串的长度"></a>获取字符串的长度</h4><p>通过 length 属性获取字符串的长度,结果返回一个数字。比如：</p>
-<pre><code>var myString = &quot;hello world &quot;;
-myString.length;
-</code></pre><p>上述代码在控制台中运行的结果为：12（除了字母还有两个空格）。</p>
+<pre class="line-numbers language-javascript"><code class="language-javascript"><span class="token keyword">var</span> myString <span class="token operator">=</span> <span class="token string">"hello world "</span><span class="token punctuation">;</span>
+myString<span class="token punctuation">.</span>length<span class="token punctuation">;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p>上述代码在控制台中运行的结果为：12（除了字母还有两个空格）。</p>
 <p>如果你要查找这个字符串的第一个字符，你可以这么做：</p>
 <pre><code>myString[0];
 </code></pre><p>同样的你也可以查找到其他的字符，比如第五个字符，就是 myString[4]，这是因为电脑是从 0 开始，而不是 1，因此我们都要执行减一操作。</p>
@@ -696,106 +709,118 @@ myString.length;
 </ol>
 <pre><code>str.indexOf(searchValue, fromIndex);
 </code></pre><p>str 指的是我们需要查的较长的字符串，searchValue 表示我们指定的较小的字符串，fromIndex 表示调用该方法的字符串中开始查找的位置，是一个可选的任意整数值，也可以不写，默认是 0 表示从头开始查，fromIndex &lt; 0 和 fromIndex = 0 是一样的效果，表示从头开始查找整个字符串。如果 fromIndex &gt;= str.length,则该方法的返回值为 -1。这里有个特殊的情况：就是如果被查找的字符串（searchValue）是一个空字符串，那么当 fromIndex &lt;= 0 时返回 0，0 &lt; fromIndex &lt;= str.length 时返回 fromIndex，fromIndex &gt; str.length 时返回 str.length。这样说你可能不太明白，我们来实践一下看看实际效果：</p>
-<pre><code>&quot;Blue Sky&quot;.indexOf(&quot;Blue&quot;);     // returns  0
-&quot;Blue Sky&quot;.indexOf(&quot;Ble&quot;);    // returns -1
-&quot;Blue Sky&quot;.indexOf(&quot;Sky&quot;, 0); // returns  5
-&quot;Blue Sky&quot;.indexOf(&quot;Sky&quot;, -1); // returns  5
-&quot;Blue Sky&quot;.indexOf(&quot;Sky&quot;, 5); // returns  5
-&quot;Blue Sky&quot;.indexOf(&quot;Sky&quot;, 9); // returns -1
-&quot;Blue Sky&quot;.indexOf(&quot;&quot;, 0);      // returns  0
-&quot;Blue Sky&quot;.indexOf(&quot;&quot;, 5);     // returns 5
-&quot;Blue Sky&quot;.indexOf(&quot;&quot;, 9);     // returns 8
-</code></pre><p>注：返回值指的是指定值的第一次出现的索引，如果没有找到 -1。indexOf 方法区分大小写，比如：</p>
-<pre><code>&quot;Blue Sky&quot;.indexOf(&quot;blue&quot;); // returns -1
-&quot;Blue Sky&quot;.indexOf(&quot;Blue&quot;); // returns 0
-</code></pre><ol>
+<pre class="line-numbers language-javascript"><code class="language-javascript"><span class="token string">"Blue Sky"</span><span class="token punctuation">.</span><span class="token function">indexOf</span><span class="token punctuation">(</span><span class="token string">"Blue"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>     <span class="token comment" spellcheck="true">// returns  0</span>
+<span class="token string">"Blue Sky"</span><span class="token punctuation">.</span><span class="token function">indexOf</span><span class="token punctuation">(</span><span class="token string">"Ble"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token comment" spellcheck="true">// returns -1</span>
+<span class="token string">"Blue Sky"</span><span class="token punctuation">.</span><span class="token function">indexOf</span><span class="token punctuation">(</span><span class="token string">"Sky"</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// returns  5</span>
+<span class="token string">"Blue Sky"</span><span class="token punctuation">.</span><span class="token function">indexOf</span><span class="token punctuation">(</span><span class="token string">"Sky"</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// returns  5</span>
+<span class="token string">"Blue Sky"</span><span class="token punctuation">.</span><span class="token function">indexOf</span><span class="token punctuation">(</span><span class="token string">"Sky"</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// returns  5</span>
+<span class="token string">"Blue Sky"</span><span class="token punctuation">.</span><span class="token function">indexOf</span><span class="token punctuation">(</span><span class="token string">"Sky"</span><span class="token punctuation">,</span> <span class="token number">9</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// returns -1</span>
+<span class="token string">"Blue Sky"</span><span class="token punctuation">.</span><span class="token function">indexOf</span><span class="token punctuation">(</span><span class="token string">""</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>      <span class="token comment" spellcheck="true">// returns  0</span>
+<span class="token string">"Blue Sky"</span><span class="token punctuation">.</span><span class="token function">indexOf</span><span class="token punctuation">(</span><span class="token string">""</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">;</span>     <span class="token comment" spellcheck="true">// returns 5</span>
+<span class="token string">"Blue Sky"</span><span class="token punctuation">.</span><span class="token function">indexOf</span><span class="token punctuation">(</span><span class="token string">""</span><span class="token punctuation">,</span> <span class="token number">9</span><span class="token punctuation">)</span><span class="token punctuation">;</span>     <span class="token comment" spellcheck="true">// returns 8</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>注：返回值指的是指定值的第一次出现的索引，如果没有找到 -1。indexOf 方法区分大小写，比如：</p>
+<pre class="line-numbers language-javascript"><code class="language-javascript"><span class="token string">"Blue Sky"</span><span class="token punctuation">.</span><span class="token function">indexOf</span><span class="token punctuation">(</span><span class="token string">"blue"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// returns -1</span>
+<span class="token string">"Blue Sky"</span><span class="token punctuation">.</span><span class="token function">indexOf</span><span class="token punctuation">(</span><span class="token string">"Blue"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// returns 0</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<ol>
 <li>当你知道字符串中的子字符串开始的位置，以及想要结束的字符时，slice()方法可以用来提取 它。比如：</li>
 </ol>
-<pre><code>&quot;Blue Sky&quot;.slice(0,3); // returns &quot;Blu&quot;
-</code></pre><p>注：slice(strat，end)，第一个参数 start 是开始提取的字符位置，第二个参数 end 是提取的最后一个字符的后一个位置。所以提取从第一个位置开始，直到但不包括最后一个位置。另外第二个参数也可以不写，不写代表某个字符之后提取字符串中的所有剩余字符。比如：</p>
-<pre><code>&quot;Blue Sky&quot;.slice(2); // returns &quot;ue Sky&quot;
-</code></pre><h4 id="转换大小写"><a href="#转换大小写" class="headerlink" title="转换大小写"></a>转换大小写</h4><p>字符串方法 toLowerCase() 和 toUpperCase() 字符串并将所有字符分别转换为小写或大写。比如：</p>
-<pre><code>var string = &quot;I like study&quot;;
-string.toLowerCase(); // returns &quot;i like study&quot;
-string.toUpperCase(); // returns &quot;I LIKE STUDY&quot;
-</code></pre><h4 id="替换字符串的某部分"><a href="#替换字符串的某部分" class="headerlink" title="替换字符串的某部分"></a>替换字符串的某部分</h4><p>可以使用 replace() 方法将字符串中的一个子字符串替换为另一个子字符串。比如：</p>
-<pre><code>var string = &quot;I like study&quot;;
-string.replace(&quot;study&quot;,&quot;sleep&quot;); // returns &quot;I like sleep&quot;
-</code></pre><p>注：字符串的操作方法其实还有很多，我们将在后续的课程中再为大家作深入讲解。</p>
+<pre class="line-numbers language-javascript"><code class="language-javascript"><span class="token string">"Blue Sky"</span><span class="token punctuation">.</span><span class="token function">slice</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// returns "Blu"</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>注：slice(strat，end)，第一个参数 start 是开始提取的字符位置，第二个参数 end 是提取的最后一个字符的后一个位置。所以提取从第一个位置开始，直到但不包括最后一个位置。另外第二个参数也可以不写，不写代表某个字符之后提取字符串中的所有剩余字符。比如：</p>
+<pre class="line-numbers language-javascript"><code class="language-javascript"><span class="token string">"Blue Sky"</span><span class="token punctuation">.</span><span class="token function">slice</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// returns "ue Sky"</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h4 id="转换大小写"><a href="#转换大小写" class="headerlink" title="转换大小写"></a>转换大小写</h4><p>字符串方法 toLowerCase() 和 toUpperCase() 字符串并将所有字符分别转换为小写或大写。比如：</p>
+<pre class="line-numbers language-javascript"><code class="language-javascript"><span class="token keyword">var</span> string <span class="token operator">=</span> <span class="token string">"I like study"</span><span class="token punctuation">;</span>
+string<span class="token punctuation">.</span><span class="token function">toLowerCase</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// returns "i like study"</span>
+string<span class="token punctuation">.</span><span class="token function">toUpperCase</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// returns "I LIKE STUDY"</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<h4 id="替换字符串的某部分"><a href="#替换字符串的某部分" class="headerlink" title="替换字符串的某部分"></a>替换字符串的某部分</h4><p>可以使用 replace() 方法将字符串中的一个子字符串替换为另一个子字符串。比如：</p>
+<pre class="line-numbers language-javascript"><code class="language-javascript"><span class="token keyword">var</span> string <span class="token operator">=</span> <span class="token string">"I like study"</span><span class="token punctuation">;</span>
+string<span class="token punctuation">.</span><span class="token function">replace</span><span class="token punctuation">(</span><span class="token string">"study"</span><span class="token punctuation">,</span><span class="token string">"sleep"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// returns "I like sleep"</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p>注：字符串的操作方法其实还有很多，我们将在后续的课程中再为大家作深入讲解。</p>
 <h2 id="详解类型转换"><a href="#详解类型转换" class="headerlink" title="详解类型转换"></a>详解类型转换</h2><h3 id="转换成字符串"><a href="#转换成字符串" class="headerlink" title="转换成字符串"></a>转换成字符串</h3><ol>
 <li>几乎每个值都有 toString() 方法。比如在控制台输入以下代码：</li>
 </ol>
-<pre><code>var num = 8;
-var numString = num.toString();
-numString;  // returns &quot;8&quot;
-var result = true;
-var resultString = result.toString();
-resultString;// returns &quot;true&quot;
-</code></pre><p>数值类型的 toString() ,可以携带一个参数,输出对应进制的值。比如：</p>
-<pre><code>var num = 16;
-console.log(num.toString());  //&quot;16&quot; 默认是10进制
-console.log(num.toString(10));//&quot;16&quot;
-console.log(num.toString(2)); //&quot;10000&quot;
-console.log(num.toString(8)); //&quot;20&quot;
-console.log(num.toString(16));//&quot;10&quot;
-</code></pre><ol>
+<pre class="line-numbers language-javascript"><code class="language-javascript"><span class="token keyword">var</span> num <span class="token operator">=</span> <span class="token number">8</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> numString <span class="token operator">=</span> num<span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+numString<span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">// returns "8"</span>
+<span class="token keyword">var</span> result <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> resultString <span class="token operator">=</span> result<span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+resultString<span class="token punctuation">;</span><span class="token comment" spellcheck="true">// returns "true"</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>数值类型的 toString() ,可以携带一个参数,输出对应进制的值。比如：</p>
+<pre class="line-numbers language-javascript"><code class="language-javascript"><span class="token keyword">var</span> num <span class="token operator">=</span> <span class="token number">16</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>num<span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">//"16" 默认是10进制</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>num<span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//"16"</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>num<span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//"10000"</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>num<span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token number">8</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//"20"</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>num<span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token number">16</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//"10"</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ol>
 <li>String() 函数。比如在控制台中输入以下代码：</li>
 </ol>
-<pre><code>var num1 = 8;
-var num2 = String(num1);
-num2; // returns &quot;8&quot;
-var result = true;
-var result1 = String(result);
-result1; // returns &quot;true&quot;
-</code></pre><p>注：因为有的值没有 toString() 方法，所以需要用 String(),比如 null 和 undefined。如下所示：</p>
-<p><img src="https://doc.shiyanlou.com/document-uid897174labid9222timestamp1547257971275.png/wm" alt="img"></p>
+<pre class="line-numbers language-javascript"><code class="language-javascript"><span class="token keyword">var</span> num1 <span class="token operator">=</span> <span class="token number">8</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> num2 <span class="token operator">=</span> <span class="token function">String</span><span class="token punctuation">(</span>num1<span class="token punctuation">)</span><span class="token punctuation">;</span>
+num2<span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// returns "8"</span>
+<span class="token keyword">var</span> result <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> result1 <span class="token operator">=</span> <span class="token function">String</span><span class="token punctuation">(</span>result<span class="token punctuation">)</span><span class="token punctuation">;</span>
+result1<span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// returns "true"</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>注：因为有的值没有 toString() 方法，所以需要用 String(),比如 null 和 undefined。如下所示：</p>
+<p><img src="/2019/08/27/1/1566901142698.png" alt></p>
 <ol>
 <li>使用拼接字符串。比如在控制台中输入以下代码：</li>
 </ol>
-<pre><code>var num1 = 16;
-var num2 = num1 + &quot;&quot;;
-num2; // returns &quot;16&quot;
-</code></pre><h3 id="转换成数值类型"><a href="#转换成数值类型" class="headerlink" title="转换成数值类型"></a>转换成数值类型</h3><ol>
+<pre class="line-numbers language-javascript"><code class="language-javascript"><span class="token keyword">var</span> num1 <span class="token operator">=</span> <span class="token number">16</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> num2 <span class="token operator">=</span> num1 <span class="token operator">+</span> <span class="token string">""</span><span class="token punctuation">;</span>
+num2<span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// returns "16"</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<h3 id="转换成数值类型"><a href="#转换成数值类型" class="headerlink" title="转换成数值类型"></a>转换成数值类型</h3><ol>
 <li>Number()可以把任意值转换成数值，如果要转换的字符串中有一个不是数值的字符，返回 NaN（not a number）。比如在控制台中依次输入以下代码：</li>
 </ol>
-<pre><code>var num1 = Number(true); 
-num1; // true 返回 1，false 返回 0
+<pre class="line-numbers language-javascript"><code class="language-javascript"><span class="token keyword">var</span> num1 <span class="token operator">=</span> <span class="token function">Number</span><span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 
+num1<span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// true 返回 1，false 返回 0</span>
 
-var num2 = Number(undefined);
-num2;  // 返回 NaN
+<span class="token keyword">var</span> num2 <span class="token operator">=</span> <span class="token function">Number</span><span class="token punctuation">(</span>undefined<span class="token punctuation">)</span><span class="token punctuation">;</span>
+num2<span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">// 返回 NaN</span>
 
-var num3 = Number(null);
-num3; //返回 0
+<span class="token keyword">var</span> num3 <span class="token operator">=</span> <span class="token function">Number</span><span class="token punctuation">(</span><span class="token keyword">null</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+num3<span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//返回 0</span>
 
-var num4 = Number(&quot;syl&quot;);
-num4;  // 返回 NaN
+<span class="token keyword">var</span> num4 <span class="token operator">=</span> <span class="token function">Number</span><span class="token punctuation">(</span><span class="token string">"syl"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+num4<span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">// 返回 NaN</span>
 
-var num5 = Number(&quot;   &quot;);
-num5; // 如果是空字符串返回 0
+<span class="token keyword">var</span> num5 <span class="token operator">=</span> <span class="token function">Number</span><span class="token punctuation">(</span><span class="token string">"   "</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+num5<span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 如果是空字符串返回 0</span>
 
-var num6 = Number(123);
-num6; // 返回123，如果是数字型的字符，返回数字
+<span class="token keyword">var</span> num6 <span class="token operator">=</span> <span class="token function">Number</span><span class="token punctuation">(</span><span class="token number">123</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+num6<span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 返回123，如果是数字型的字符，返回数字</span>
 
-var num7 = Number(&quot;123abc&quot;);
-num7;  // 返回 NaN
-</code></pre><ol>
+<span class="token keyword">var</span> num7 <span class="token operator">=</span> <span class="token function">Number</span><span class="token punctuation">(</span><span class="token string">"123abc"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+num7<span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">// 返回 NaN</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ol>
 <li>parseInt() 把字符串转换成整数。比如在控制台中依次输入以下代码：</li>
 </ol>
-<pre><code>var num1 = parseInt(&quot;12.3abc&quot;);  
-num1; //返回 12，如果第一个字符是数字会解析知道遇到非数字结束,只取整，不是约等于
+<pre class="line-numbers language-javascript"><code class="language-javascript"><span class="token keyword">var</span> num1 <span class="token operator">=</span> <span class="token function">parseInt</span><span class="token punctuation">(</span><span class="token string">"12.3abc"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  
+num1<span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//返回 12，如果第一个字符是数字会解析知道遇到非数字结束,只取整，不是约等于</span>
 
-var num2 = parseInt(&quot;abc123&quot;);  
-num2; //返回 NaN，如果第一个字符不是数字或者符号就返回 NaN
+<span class="token keyword">var</span> num2 <span class="token operator">=</span> <span class="token function">parseInt</span><span class="token punctuation">(</span><span class="token string">"abc123"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  
+num2<span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//返回 NaN，如果第一个字符不是数字或者符号就返回 NaN</span>
 
-var num3 = parseInt(&quot;&quot;); 
-num3;       // 空字符串返回 NaN，但是 Number(&quot;&quot;)返回 0
+<span class="token keyword">var</span> num3 <span class="token operator">=</span> <span class="token function">parseInt</span><span class="token punctuation">(</span><span class="token string">""</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 
+num3<span class="token punctuation">;</span>       <span class="token comment" spellcheck="true">// 空字符串返回 NaN，但是 Number("")返回 0</span>
 
-var num4 = parseInt(&quot;520&quot;);
-num4;      //返回 520
+<span class="token keyword">var</span> num4 <span class="token operator">=</span> <span class="token function">parseInt</span><span class="token punctuation">(</span><span class="token string">"520"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+num4<span class="token punctuation">;</span>      <span class="token comment" spellcheck="true">//返回 520</span>
 
-var num5 = parseInt(&quot;0xA&quot;); 
-num5;  //返回 10
-</code></pre><p>另外值得注意的是，parseInt()可以传递两个参数，第一个参数是要转换的字符串，第二个参数是要转换的进制。大家可以自行尝试一下。</p>
+<span class="token keyword">var</span> num5 <span class="token operator">=</span> <span class="token function">parseInt</span><span class="token punctuation">(</span><span class="token string">"0xA"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 
+num5<span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">//返回 10</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>另外值得注意的是，parseInt()可以传递两个参数，第一个参数是要转换的字符串，第二个参数是要转换的进制。大家可以自行尝试一下。</p>
 <ol>
 <li>parseFloat()把字符串转换成浮点数。写法和parseInt()相似，主要有以下几个不同点：</li>
 </ol>
@@ -804,46 +829,50 @@ num5;  //返回 10
 <li>如果解析的内容里只有整数，解析成整数</li>
 </ul>
 <p>例子：</p>
-<pre><code>parseFloat(&quot;10&quot;); // returns 10
-parseFloat(&quot;10.000&quot;); // returns 10
-parseFloat(&quot;10.01&quot;); // returns 10.01
-parseFloat(&quot; 10 &quot;); // returns 10
-parseFloat(&quot;10 hours&quot;); // returns 10
-parseFloat(&quot;aaa 10 &quot;); // returns NaN
-</code></pre><ol>
+<pre class="line-numbers language-javascript"><code class="language-javascript"><span class="token function">parseFloat</span><span class="token punctuation">(</span><span class="token string">"10"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// returns 10</span>
+<span class="token function">parseFloat</span><span class="token punctuation">(</span><span class="token string">"10.000"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// returns 10</span>
+<span class="token function">parseFloat</span><span class="token punctuation">(</span><span class="token string">"10.01"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// returns 10.01</span>
+<span class="token function">parseFloat</span><span class="token punctuation">(</span><span class="token string">" 10 "</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// returns 10</span>
+<span class="token function">parseFloat</span><span class="token punctuation">(</span><span class="token string">"10 hours"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// returns 10</span>
+<span class="token function">parseFloat</span><span class="token punctuation">(</span><span class="token string">"aaa 10 "</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// returns NaN</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ol>
 <li>执行减 0 操作。比如：</li>
 </ol>
 <pre><code>var n=&quot;10&quot;;
 var m=n-0;
 m; // returns 10
 </code></pre><p>值得注意的是，如果该字符串不是纯粹的数字字符串，那么它执行减 0 操作后，虽然变成了一个数字类型，但是返回值为 NaN。比如：</p>
-<pre><code>var n = &quot;abc&quot;;
-var m = n - 0;
-m; // returns NaN
-typeof(m); // returns &quot;number&quot;
-</code></pre><h3 id="转换成布尔类型"><a href="#转换成布尔类型" class="headerlink" title="转换成布尔类型"></a>转换成布尔类型</h3><ol>
+<pre class="line-numbers language-javascript"><code class="language-javascript"><span class="token keyword">var</span> n <span class="token operator">=</span> <span class="token string">"abc"</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> m <span class="token operator">=</span> n <span class="token operator">-</span> <span class="token number">0</span><span class="token punctuation">;</span>
+m<span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// returns NaN</span>
+<span class="token keyword">typeof</span><span class="token punctuation">(</span>m<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// returns "number"</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="转换成布尔类型"><a href="#转换成布尔类型" class="headerlink" title="转换成布尔类型"></a>转换成布尔类型</h3><ol>
 <li>使用 Boolean() 函数。比如：</li>
 </ol>
-<pre><code>Boolean(123);// returns true
-Boolean(&quot;abc&quot;); // returns true
-Boolean(null); // returns false
-Boolean(undefined); // returns false
-Boolean(NaN); // returns false
-Boolean(0); // returns false
-Boolean(&quot;&quot;); // returns false
-Boolean(false); // returns false
-Boolean(&quot;false&quot;); // returns true
-Boolean(-1); // returns true
-</code></pre><ol>
+<pre class="line-numbers language-javascript"><code class="language-javascript"><span class="token function">Boolean</span><span class="token punctuation">(</span><span class="token number">123</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">// returns true</span>
+<span class="token function">Boolean</span><span class="token punctuation">(</span><span class="token string">"abc"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// returns true</span>
+<span class="token function">Boolean</span><span class="token punctuation">(</span><span class="token keyword">null</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// returns false</span>
+<span class="token function">Boolean</span><span class="token punctuation">(</span>undefined<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// returns false</span>
+<span class="token function">Boolean</span><span class="token punctuation">(</span><span class="token number">NaN</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// returns false</span>
+<span class="token function">Boolean</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// returns false</span>
+<span class="token function">Boolean</span><span class="token punctuation">(</span><span class="token string">""</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// returns false</span>
+<span class="token function">Boolean</span><span class="token punctuation">(</span><span class="token boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// returns false</span>
+<span class="token function">Boolean</span><span class="token punctuation">(</span><span class="token string">"false"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// returns true</span>
+<span class="token function">Boolean</span><span class="token punctuation">(</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// returns true</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ol>
 <li>流程控制语句会把后面的值隐式转换为布尔类型。比如：</li>
 </ol>
-<pre><code>var message;
-if(message) { //会自动把message转换成false,最后打印结果为:我很好
-    console.log(&quot;你好啊&quot;);
-} else{    
-console.log(&quot;我很好&quot;);
-}
-</code></pre><h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>本节主要就 JavaScript 的基础语法进行了学习，主要包括以下内容：</p>
+<pre class="line-numbers language-javascript"><code class="language-javascript"><span class="token keyword">var</span> message<span class="token punctuation">;</span>
+<span class="token keyword">if</span><span class="token punctuation">(</span>message<span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token comment" spellcheck="true">//会自动把message转换成false,最后打印结果为:我很好</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"你好啊"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span> <span class="token keyword">else</span><span class="token punctuation">{</span>    
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"我很好"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>本节主要就 JavaScript 的基础语法进行了学习，主要包括以下内容：</p>
 <ul>
 <li>JavaScript 是什么</li>
 <li>变量</li>
@@ -1343,7 +1372,7 @@ null &amp;
 
             
             &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-            <span class="white-color">9.4k</span>
+            <span class="white-color">9.1k</span>
             
 
             <br>
