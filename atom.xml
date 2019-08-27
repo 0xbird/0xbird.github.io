@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://0xbird.top/"/>
-  <updated>2019-08-27T07:20:01.887Z</updated>
+  <updated>2019-08-27T08:40:00.346Z</updated>
   <id>https://0xbird.top/</id>
   
   <author>
@@ -15,6 +15,60 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>1.Javascript 基础</title>
+    <link href="https://0xbird.top/2019/08/27/1.javascript-ji-chu/"/>
+    <id>https://0xbird.top/2019/08/27/1.javascript-ji-chu/</id>
+    <published>2019-08-27T08:36:03.000Z</published>
+    <updated>2019-08-27T08:40:00.346Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;简介&quot;&gt;&lt;a href=&quot;#简介&quot; class=&quot;headerlink&quot; title=&quot;简介&quot;&gt;&lt;/a&gt;简介&lt;/h2&gt;&lt;p&gt;JavaScript 是一种脚本语言，学一种编程语言，首先就要从这种语言的基础语法入手。本节我们就将对 JavaScript
+        
+      
+    
+    </summary>
+    
+      <category term="Javascript" scheme="https://0xbird.top/categories/Javascript/"/>
+    
+    
+      <category term="Javascript" scheme="https://0xbird.top/tags/Javascript/"/>
+    
+      <category term="浏览器" scheme="https://0xbird.top/tags/%E6%B5%8F%E8%A7%88%E5%99%A8/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>二零一七年终总结</title>
+    <link href="https://0xbird.top/2018/01/22/2017-conclusion/"/>
+    <id>https://0xbird.top/2018/01/22/2017-conclusion/</id>
+    <published>2018-01-22T04:32:09.000Z</published>
+    <updated>2019-08-27T08:29:19.936Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;div align=&quot;middle&quot;&gt;&lt;iframe frameborder=&quot;no&quot; border=&quot;0&quot; marginwidth=&quot;0&quot; marginheight=&quot;0&quot; width=&quot;330&quot; height=&quot;86&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="随笔" scheme="https://0xbird.top/categories/%E9%9A%8F%E7%AC%94/"/>
+    
+    
+      <category term="随笔" scheme="https://0xbird.top/tags/%E9%9A%8F%E7%AC%94/"/>
+    
+  </entry>
   
   <entry>
     <title>使用AFL对Linux内核Fuzzing的总结</title>
