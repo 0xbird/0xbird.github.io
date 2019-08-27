@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://0xbird.top/"/>
-  <updated>2019-08-26T16:03:29.283Z</updated>
+  <updated>2019-08-27T05:54:52.910Z</updated>
   <id>https://0xbird.top/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>使用AFL对Linux内核Fuzzing的总结</title>
+    <link href="https://0xbird.top/2019/08/27/article-title/"/>
+    <id>https://0xbird.top/2019/08/27/article-title/</id>
+    <published>2019-08-26T17:24:07.000Z</published>
+    <updated>2019-08-27T05:54:52.910Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;模糊测试是一种很好的漏洞挖掘技术，Fuzzer将半随机输入喂到到测试程序，目的是找到触发错误的输入。模糊测试在查找C或C
+        
+      
+    
+    </summary>
+    
+    
+      <category term="-Fuzzing；漏洞挖掘；AFL" scheme="https://0xbird.top/tags/Fuzzing%EF%BC%9B%E6%BC%8F%E6%B4%9E%E6%8C%96%E6%8E%98%EF%BC%9BAFL/"/>
+    
+  </entry>
   
   <entry>
     <title>二零一七年终总结</title>
