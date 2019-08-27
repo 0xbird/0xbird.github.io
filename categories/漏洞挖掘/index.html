@@ -4,10 +4,10 @@
 
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="留言板, 智能硬件/无线电/车联网安全研究&amp;漏洞挖掘  应用软件/浏览器/操作系统漏洞挖掘 AI安全比赛&amp;样本对抗&amp;GAN">
+    <meta name="keywords" content="分类: 漏洞挖掘, 智能硬件/无线电/车联网安全研究&amp;漏洞挖掘  应用软件/浏览器/操作系统漏洞挖掘 AI安全比赛&amp;样本对抗&amp;GAN">
     <meta name="baidu-site-verification" content>
     <meta name="google-site-verification" content>
-    <meta name="description" content="留言板 | 0xbird&#39;Blog">
+    <meta name="description" content="分类: 漏洞挖掘 | 0xbird&#39;Blog">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -15,7 +15,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>留言板 | 0xbird&#39;Blog</title>
+    <title>分类: 漏洞挖掘 | 0xbird&#39;Blog</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -282,7 +282,7 @@
                     0xbirdpwn
                  -->
                 
-                    留言板
+                    分类
                 
             </div>
 
@@ -303,54 +303,99 @@ $('.bg-cover').css('background-image', 'url(/medias/banner/' + new Date().getDay
 </div>
 
 <main class="content">
-    <div id="aboutme" class="container contact-container">
-        <div class="card">
-            <div class="card-content">
-                <div class="card-content article-card-content">
-                    <div id="articleContent" data-aos="fade-up">
-                        <p>VxWorks 影响百万工控设备的 6 个远程代码执行漏洞分析<br>CVE-2019-0708 远程桌面高危漏洞分析<br>Linux 内核本地提权漏洞分析(CVE-2019-13272)<br>Internet Explorer 内存未初始化(暴雷)（CVE-2012-1889）漏洞分析<br>PCMan FTP 远程代码执行漏洞分析（CVE-2013-4730）<br>通杀全版本的 Office 远程代码执行漏洞（CVE-2017-11882）分析<br>Win32 组件空指针漏洞（CVE-2018-8120）分析</p>
 
-                    </div>
-                </div>
+    
+
+<div id="category-cloud" class="container chip-container">
+    <div class="card">
+        <div class="card-content">
+            <div class="tag-title center-align">
+                <i class="fa fa-bookmark"></i>&nbsp;&nbsp;文章分类
+            </div>
+            <div class="tag-chips">
+                
+                
+                
+                <a href="/categories/随笔/" title="随笔: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            style="background-color: #F9EBEA;">随笔
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/categories/漏洞挖掘/" title="漏洞挖掘: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-active "
+                            style="background-color: #F5EEF8;">漏洞挖掘
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+                
             </div>
         </div>
-        <div class="card">
-
-            
-            <link rel="stylesheet" href="/libs/gitalk/gitalk.css">
-<link rel="stylesheet" href="/css/my-gitalk.css">
-
-<div class="card gitalk-card" data-aos="fade-up">
-    <div id="gitalk-container" class="card-content"></div>
+    </div>
 </div>
 
-<script src="/libs/gitalk/gitalk.min.js"></script>
-<script>
-    let gitalk = new Gitalk({
-        clientID: '',
-        clientSecret: '',
-        repo: '0xbird.github.io',
-        owner: '0xbird',
-        admin: "0xbird",
-        id: 'contact/index.html',
-        distractionFreeMode: false  // Facebook-like distraction free mode
-    });
+    
 
-    gitalk.render('gitalk-container');
-</script>
+    <article id="articles" class="container articles">
+        <div class="row tags-posts">
             
+            <div class="article tag-post col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/2018/01/22/article-title/">
+                        <div class="card-image tag-image">
+                            
+                            
+                            <img src="/medias/featureimages/11.jpg" class="responsive-img" alt="使用AFL对Linux内核Fuzzing的总结">
+                            
+                            <span class="card-title">使用AFL对Linux内核Fuzzing的总结</span>
+                        </div>
+                    </a>
+                    <div class="card-content article-content">
+                        <div class="summary block-with-text">
+                            
+                                模糊测试是一种很好的漏洞挖掘技术，Fuzzer将半随机输入喂到到测试程序，目的是找到触发错误的输入。模糊测试在查找C或C ++程序中的内存破坏漏洞时特别有用。
+通常情况下，建议选择一个众所周知但很少探索的库，这个库在解析时很重要。历史上，像
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2018-01-22
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fa fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/漏洞挖掘/" class="post-category" target="_blank">
+                                    漏洞挖掘
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
+                    </div>
 
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/tags/Fuzzing/" target="_blank">
+                            <span class="chip bg-color">Fuzzing</span>
+                        </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
             
-
-            
-
-            
-
-            
-
         </div>
-    </div>
+    </article>
 </main>
+
+
 <footer class="page-footer bg-color">
     <div class="container row center-align">
         <div class="col s12 m8 l8 copy-right">

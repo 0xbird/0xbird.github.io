@@ -4,14 +4,11 @@
 
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="二零一七年终总结, 智能硬件/无线电/车联网安全研究&amp;漏洞挖掘  应用软件/浏览器/操作系统漏洞挖掘 AI安全比赛&amp;样本对抗&amp;GAN">
+    <meta name="keywords" content="使用AFL对Linux内核Fuzzing的总结, 智能硬件/无线电/车联网安全研究&amp;漏洞挖掘  应用软件/浏览器/操作系统漏洞挖掘 AI安全比赛&amp;样本对抗&amp;GAN">
     <meta name="baidu-site-verification" content>
     <meta name="google-site-verification" content>
-    <meta name="description" content="
-
-时间过得很快，终于等到放寒假了，虽然这几个月没有课，天天和放假也没啥区别呢。细数一下，还有5个月就要毕业了吧，大一刚入学的场景却依然清楚地记得，转眼间就成了老学长了呢。闲来无事，随便写写，有感而发，无病呻吟而已。
-2017
-回顾我的20">
+    <meta name="description" content="模糊测试是一种很好的漏洞挖掘技术，Fuzzer将半随机输入喂到到测试程序，目的是找到触发错误的输入。模糊测试在查找C或C ++程序中的内存破坏漏洞时特别有用。
+通常情况下，建议选择一个众所周知但很少探索的库，这个库在解析时很重要。历史上，像">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -19,7 +16,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>二零一七年终总结 | 0xbird&#39;Blog</title>
+    <title>使用AFL对Linux内核Fuzzing的总结 | 0xbird&#39;Blog</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -293,13 +290,13 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/7.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/11.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        二零一七年终总结
+                        使用AFL对Linux内核Fuzzing的总结
                     </div>
                 </div>
             </div>
@@ -410,8 +407,8 @@
                     
                     <div class="article-tag">
                         
-                        <a href="/tags/随笔/" target="_blank">
-                            <span class="chip bg-color">随笔</span>
+                        <a href="/tags/Fuzzing/" target="_blank">
+                            <span class="chip bg-color">Fuzzing</span>
                         </a>
                         
                     </div>
@@ -422,8 +419,8 @@
                     <div class="post-cate">
                         <i class="fa fa-bookmark fa-fw icon-category"></i>
                         
-                        <a href="/categories/随笔/" class="post-category" target="_blank">
-                            随笔
+                        <a href="/categories/漏洞挖掘/" class="post-category" target="_blank">
+                            漏洞挖掘
                         </a>
                         
                     </div>
@@ -448,14 +445,14 @@
                 
                 <div class="info-break-policy">
                     <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.1k
+                    3.2k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    3 分
+                    11 分
                 </div>
                 
                 
@@ -471,37 +468,163 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <div align="middle"><iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=407679465&auto=1&height=66"></iframe></div>
+                <p>模糊测试是一种很好的漏洞挖掘技术，Fuzzer将半随机输入喂到到测试程序，目的是找到触发错误的输入。模糊测试在查找C或C ++程序中的内存破坏漏洞时特别有用。</p>
+<p>通常情况下，建议选择一个众所周知但很少探索的库，这个库在解析时很重要。历史上，像libjpeg，libpng和libyaml这样的东西都是完美的目标。如今找到一个好目标更难 - 一切似乎都已经被模糊化了。这是好事！我猜软件越来越好了！我没有选择用户空间目标，而是选择了Linux内核netlink机器。</p>
+<p>Netlink是一个Linux内核工具，它用于配置网络接口，IP地址，路由表等。这是一个很好的fuzzing 目标：它是内核的一个小模块，并且生成畸形有效消息相对比较容易。最重要的是，我们可以在此过程中学到很多关于Linux内核的知识。</p>
+<p>在这篇文章中，我将使用AFL模糊器，将netlink shim程序与自定义Linux内核相对应，所有这些都在KVM虚拟机中运行。</p>
+<h3 id="以前的技术支持"><a href="#以前的技术支持" class="headerlink" title="以前的技术支持"></a>以前的技术支持</h3><p>我们将要使用的技术被称为“覆盖引导模糊测试”。有很多以前的文献：</p>
+<ul>
+<li>Dan Guido <a href="https://blog.trailofbits.com/2017/02/16/the-smart-fuzzer-revolution/" target="_blank" rel="noopener">的智能模糊革命</a>，以及<a href="https://lwn.net/Articles/677764/" target="_blank" rel="noopener">LWN</a>关于它的<a href="https://lwn.net/Articles/677764/" target="_blank" rel="noopener">文章</a></li>
+<li>Mateusz“j00ru”Jurczyk的<a href="https://j00ru.vexillium.org/talks/blackhat-eu-effective-file-format-fuzzing-thoughts-techniques-and-results/" target="_blank" rel="noopener">有效文件格式模糊</a>测试</li>
+<li><a href="http://honggfuzz.com/" target="_blank" rel="noopener">honggfuzz</a>是一个现代化的，功能丰富的覆盖面引导的fuzzer</li>
+<li><a href="https://google.github.io/clusterfuzz/" target="_blank" rel="noopener">ClusterFuzz</a></li>
+<li><a href="https://github.com/google/fuzzer-test-suite" target="_blank" rel="noopener">Fuzzer测试套件</a></li>
+</ul>
+<p>很多人过去都在Fuzzing Linux内核：</p>
+<ul>
+<li>由Dmitry Vyukov <a href="https://github.com/google/syzkaller/blob/master/docs/syzbot.md" target="_blank" rel="noopener">创建的syzkaller（又名syzbot）</a>是一个非常强大的CI风格的持续运行的内核模糊器，它已经发现了数百个漏洞。</li>
+<li><a href="https://github.com/kernelslacker/trinity" target="_blank" rel="noopener">三位一体的模糊器</a></li>
+</ul>
+<p>我们将使用<a href="http://lcamtuf.coredump.cx/afl/" target="_blank" rel="noopener">AFL</a>，可能是大家最喜欢的模糊器。AFL由<a href="http://lcamtuf.coredump.cx/" target="_blank" rel="noopener">MichałZalewski</a>撰写。它以其易用性，速度和非常好的变异逻辑而闻名，这是开始模糊测试之旅的完美选择！</p>
+<p>如果您想了解有关AFL的更多信息，请参阅几个文件：</p>
+<ul>
+<li><a href="http://lcamtuf.coredump.cx/afl/historical_notes.txt" target="_blank" rel="noopener">历史笔记</a></li>
+<li><a href="http://lcamtuf.coredump.cx/afl/technical_details.txt" target="_blank" rel="noopener">技术白皮书</a></li>
+<li><a href="http://lcamtuf.coredump.cx/afl/README.txt" target="_blank" rel="noopener">自述</a></li>
+</ul>
+<h3 id="覆盖引导的模糊测试"><a href="#覆盖引导的模糊测试" class="headerlink" title="覆盖引导的模糊测试"></a>覆盖引导的模糊测试</h3><p>覆盖引导的模糊测试基于反馈回路的原理：</p>
+<ul>
+<li>模糊测试选择最有希望的测试用例</li>
+<li>模糊测试将测试变为大量新的测试用例</li>
+<li>目标代码运行变异的测试用例，并报告代码覆盖率</li>
+<li>模糊器根据报告的覆盖范围计算得分，并使用它来确定有效的变异测试的优先级并删除冗余的测试</li>
+</ul>
+<p>例如，假设输入测试是“hello”。Fuzzer可能会将其变为多种测试，例如：“hEllo”（位翻转），“hXello”（字节插入），“hllo”（字节删除）。如果这些测试中的任何一个将产生有趣的代码覆盖，那么它将被优先化并用作下一次测试的基础。</p>
+<p>有关如何完成突变以及如何有效地比较数千个程序运行的代码覆盖率报告的细节是模糊测试的秘诀，阅读<a href="http://lcamtuf.coredump.cx/afl/technical_details.txt" target="_blank" rel="noopener">AFL的技术白皮书</a>，可以了解更多细节。</p>
+<p>通常，在使用AFL时，我们需要检测目标代码，以便以AFL兼容的方式报告覆盖范围。但我们想要Fuzzing 内核！我们不能只用“afl-gcc”重新编译它！。我们将准备一个二进制文件，让AFL认为它是用它的工具编译的。这个二进制文件将报告从内核中提取的代码覆盖率。</p>
+<h3 id="内核代码覆盖率"><a href="#内核代码覆盖率" class="headerlink" title="内核代码覆盖率"></a>内核代码覆盖率</h3><p>内核至少有两个内置的覆盖机制–GCOV和KCOV：</p>
+<ul>
+<li><a href="https://www.kernel.org/doc/html/v4.15/dev-tools/gcov.html" target="_blank" rel="noopener">将gcov与Linux内核一起使用</a></li>
+<li><a href="https://www.kernel.org/doc/html/latest/dev-tools/kcov.html" target="_blank" rel="noopener">KCOV：模糊测试的代码覆盖率</a></li>
+</ul>
+<p>KCOV的设计考虑了模糊测试，因此我们将使用它。</p>
+<p>使用KCOV非常简单。我们必须使用正确的设置编译Linux内核。首先，启用KCOV内核配置选项：</p>
+<pre class="line-numbers language-sh"><code class="language-sh">cd linux
+./scripts/config \
+    -e KCOV \
+    -d KCOV_INSTRUMENT_ALL<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<p>KCOV能够记录整个内核的代码覆盖率。可以使用KCOV_INSTRUMENT_ALL选项进行设置。有个缺点是，它会减慢我们不想分析的内核部分，并且会在Fuzzing 中引入噪声（降低“稳定性”）。对于初学者，让我们禁用KCOV_INSTRUMENT_ALL并有选择地在实际想要分析的代码上启用KCOV。</p>
+<p>我们专注于Fuzzing netlink，所以在整个“net”目录树上启用KCOV：</p>
+<pre class="line-numbers language-sh"><code class="language-sh">find net -name Makefile | xargs -L1 -I {} bash -c 'echo "KCOV_INSTRUMENT := y" >> {}'<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>在一个理想环境中，我们只能为真正感兴趣的几个文件启用KCOV。但是netlink处理遍及网络堆栈代码，现在没有时间进行微调。</p>
+<p>有了KCOV，将增加报告内存损坏错误的可能性。最重要的是<a href="https://www.kernel.org/doc/html/latest/dev-tools/kasan.html" target="_blank" rel="noopener">KASAN</a>，使用该集合，可以编译我们的KCOV和KASAN启用的内核。</p>
+<p>我们将以kvm运行内核，所以需要切换一下：</p>
+<pre class="line-numbers language-sh"><code class="language-sh">./scripts/config \
+    -e VIRTIO -e VIRTIO_PCI -e NET_9P -e NET_9P_VIRTIO -e 9P_FS \
+    -e VIRTIO_NET -e VIRTIO_CONSOLE  -e DEVTMPFS ...<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<h2 id="如何使用KCOV"><a href="#如何使用KCOV" class="headerlink" title="如何使用KCOV"></a>如何使用KCOV</h2><p>KCOV非常易于使用。首先，请注意代码覆盖率记录在每个进程的数据结构中。这意味着您必须在用户空间进程中启用和禁用KCOV，并且无法记录非任务事项的覆盖范围，例如中断处理。这对我们的需求来说完全没问题。</p>
+<p>KCOV将数据报告给环形缓冲区。设置非常简单，<a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2019-07-kernel-fuzzing/src/kcov.c" target="_blank" rel="noopener">请参阅我们的代码</a>。然后你可以使用一个简单的ioctl启用和禁用它：</p>
+<pre class="line-numbers language-c"><code class="language-c"><span class="token function">ioctl</span><span class="token punctuation">(</span>kcov_fd<span class="token punctuation">,</span> KCOV_ENABLE<span class="token punctuation">,</span> KCOV_TRACE_PC<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">/* profiled code */</span>
+<span class="token function">ioctl</span><span class="token punctuation">(</span>kcov_fd<span class="token punctuation">,</span> KCOV_DISABLE<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<p>在此序列之后，环形缓冲区包含启用KCOV的内核代码的所有基本块的％rip值列表。要读取缓冲区，请运行：</p>
+<pre class="line-numbers language-c"><code class="language-c">n <span class="token operator">=</span> <span class="token function">__atomic_load_n</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>kcov_ring<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">,</span> __ATOMIC_RELAXED<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">for</span> <span class="token punctuation">(</span>i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> n<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"0x%lx\n"</span><span class="token punctuation">,</span> kcov_ring<span class="token punctuation">[</span>i <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<p>使用像<code>addr2line</code>这样的工具可以将％rip解析为特定的代码行。我们不需要它 - 原始的％rip值对我们来说已经足够了。</p>
+<h2 id="将KCOV喂入AFL"><a href="#将KCOV喂入AFL" class="headerlink" title="将KCOV喂入AFL"></a>将KCOV喂入AFL</h2><p>我们旅程的下一步是学习如何欺骗AFL。请记住，AFL需要一个特制的可执行文件，但我们想要提供内核代码覆盖率。首先，我们需要了解AFL的工作原理。</p>
+<p>AFL设置一个64K 8位数字的数组。该存储器区域称为“shared_mem”或“trace_bits”，并与跟踪的程序共享。数组中的每个字节都可以被认为是检测代码中特定（branch_src，branch_dst）对的命中计数器。</p>
+<p>重要的是要注意AFL更喜欢随机分支标签，而不是重用％rip值来识别基本块。这是为了增加熵 - 我们希望数组中的命中计数器均匀分布。AFL使用的算法是：</p>
+<pre class="line-numbers language-c"><code class="language-c">cur_location <span class="token operator">=</span> <span class="token operator">&lt;</span>COMPILE_TIME_RANDOM<span class="token operator">></span><span class="token punctuation">;</span>
+shared_mem<span class="token punctuation">[</span>cur_location <span class="token operator">^</span> prev_location<span class="token punctuation">]</span><span class="token operator">++</span><span class="token punctuation">;</span> 
+prev_location <span class="token operator">=</span> cur_location <span class="token operator">>></span> <span class="token number">1</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<p>在我们使用KCOV的情况下，我们没有每个分支的编译时随机值。相反，我们将使用哈希函数从KCOV记录的％rip生成统一的16位数。这是如何将KCOV报告提供给AFL“shared_mem”数组：</p>
+<pre class="line-numbers language-c"><code class="language-c">n <span class="token operator">=</span> <span class="token function">__atomic_load_n</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>kcov_ring<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">,</span> __ATOMIC_RELAXED<span class="token punctuation">)</span><span class="token punctuation">;</span>
+uint16_t prev_location <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token keyword">for</span> <span class="token punctuation">(</span>i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> n<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        uint16_t cur_location <span class="token operator">=</span> <span class="token function">hash_function</span><span class="token punctuation">(</span>kcov_ring<span class="token punctuation">[</span>i <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        shared_mem<span class="token punctuation">[</span>cur_location <span class="token operator">^</span> prev_location<span class="token punctuation">]</span><span class="token operator">++</span><span class="token punctuation">;</span>
+        prev_location <span class="token operator">=</span> cur_location <span class="token operator">>></span> <span class="token number">1</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="从AFL读取测试数据"><a href="#从AFL读取测试数据" class="headerlink" title="从AFL读取测试数据"></a>从AFL读取测试数据</h2><p>最后，我们需要实际编写核心netlink接口的测试代码！首先，我们需要从AFL读取输入数据。默认情况下，AFL将测试用例发送到stdin：</p>
+<pre class="line-numbers language-c"><code class="language-c"><span class="token comment" spellcheck="true">/* read AFL test data */</span>
+<span class="token keyword">char</span> buf<span class="token punctuation">[</span><span class="token number">512</span><span class="token operator">*</span><span class="token number">1024</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token keyword">int</span> buf_len <span class="token operator">=</span> <span class="token function">read</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> buf<span class="token punctuation">,</span> <span class="token keyword">sizeof</span><span class="token punctuation">(</span>buf<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<h2 id="Fuzzing-netlink"><a href="#Fuzzing-netlink" class="headerlink" title="Fuzzing netlink"></a>Fuzzing netlink</h2><p>然后我们需要将此缓冲区发送到netlink套接字。但我们对netlink的工作原理一无所知！好吧，让我们使用前5个字节的输入作为netlink协议和组ID字段。这将允许AFL找出并猜测这些字段的正确值。代码测试netlink（简化）：</p>
+<pre class="line-numbers language-c"><code class="language-c">netlink_fd <span class="token operator">=</span> <span class="token function">socket</span><span class="token punctuation">(</span>AF_NETLINK<span class="token punctuation">,</span> SOCK_RAW <span class="token operator">|</span> SOCK_NONBLOCK<span class="token punctuation">,</span> buf<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-<p>时间过得很快，终于等到放寒假了，虽然这几个月没有课，天天和放假也没啥区别呢。细数一下，还有5个月就要毕业了吧，大一刚入学的场景却依然清楚地记得，转眼间就成了老学长了呢。闲来无事，随便写写，有感而发，无病呻吟而已。</p>
-<h1 id="2017"><a href="#2017" class="headerlink" title="2017"></a>2017</h1><hr>
-<p>回顾我的2017，没做什么事，令我能记得就3件大事吧：</p>
+<span class="token keyword">struct</span> sockaddr_nl sa <span class="token operator">=</span> <span class="token punctuation">{</span>
+        <span class="token punctuation">.</span>nl_family <span class="token operator">=</span> AF_NETLINK<span class="token punctuation">,</span>
+        <span class="token punctuation">.</span>nl_groups <span class="token operator">=</span> <span class="token punctuation">(</span>buf<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">&lt;&lt;</span><span class="token number">24</span><span class="token punctuation">)</span> <span class="token operator">|</span> <span class="token punctuation">(</span>buf<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token operator">&lt;&lt;</span><span class="token number">16</span><span class="token punctuation">)</span> <span class="token operator">|</span> <span class="token punctuation">(</span>buf<span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">]</span><span class="token operator">&lt;&lt;</span><span class="token number">8</span><span class="token punctuation">)</span> <span class="token operator">|</span> buf<span class="token punctuation">[</span><span class="token number">4</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token function">bind</span><span class="token punctuation">(</span>netlink_fd<span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token keyword">struct</span> sockaddr <span class="token operator">*</span><span class="token punctuation">)</span> <span class="token operator">&amp;</span>sa<span class="token punctuation">,</span> <span class="token keyword">sizeof</span><span class="token punctuation">(</span>sa<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">struct</span> iovec iov <span class="token operator">=</span> <span class="token punctuation">{</span> <span class="token operator">&amp;</span>buf<span class="token punctuation">[</span><span class="token number">5</span><span class="token punctuation">]</span><span class="token punctuation">,</span> buf_len <span class="token operator">-</span> <span class="token number">5</span> <span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token keyword">struct</span> sockaddr_nl sax <span class="token operator">=</span> <span class="token punctuation">{</span>
+      <span class="token punctuation">.</span>nl_family <span class="token operator">=</span> AF_NETLINK<span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token keyword">struct</span> msghdr msg <span class="token operator">=</span> <span class="token punctuation">{</span> <span class="token operator">&amp;</span>sax<span class="token punctuation">,</span> <span class="token keyword">sizeof</span><span class="token punctuation">(</span>sax<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token operator">&amp;</span>iov<span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token constant">NULL</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span> <span class="token punctuation">}</span><span class="token punctuation">;</span>
+r <span class="token operator">=</span> <span class="token function">sendmsg</span><span class="token punctuation">(</span>netlink_fd<span class="token punctuation">,</span> <span class="token operator">&amp;</span>msg<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">if</span> <span class="token punctuation">(</span>r <span class="token operator">!=</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token comment" spellcheck="true">/* sendmsg succeeded! great I guess... */</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>基本上就是这样！为了速度，我们将它包装在一个模仿<a href="https://lcamtuf.blogspot.com/2014/10/fuzzing-binaries-without-execve.html" target="_blank" rel="noopener">AFL“fork服务器”逻辑</a>的短循环中。我将跳过此处的解释，<a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2019-07-kernel-fuzzing/src/forksrv.c" target="_blank" rel="noopener">请参阅我们的代码了解详细信息</a>。我们的AFL-to-KCOV垫片的结果代码如下所示：</p>
+<pre class="line-numbers language-c"><code class="language-c"><span class="token function">forksrv_welcome</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">while</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token function">forksrv_cycle</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    test_data <span class="token operator">=</span> <span class="token function">afl_read_input</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">kcov_enable</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment" spellcheck="true">/* netlink magic */</span>
+    <span class="token function">kcov_disable</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment" spellcheck="true">/* fill in shared_map with tuples recorded by kcov */</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>new_crash_in_dmesg<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+         <span class="token function">forksrv_status</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+         <span class="token function">forksrv_status</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p><a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2019-07-kernel-fuzzing/src/fuzznetlink.c" target="_blank" rel="noopener">查看完整的源代码</a>。</p>
+<h2 id="如何运行自定义内核"><a href="#如何运行自定义内核" class="headerlink" title="如何运行自定义内核"></a>如何运行自定义内核</h2><p>我们遗漏了一个重要的部分 - 如何实际运行我们构建的自定义内核。有三种选择：</p>
+<p><strong>“native”</strong>：您可以在服务器上完全启动构建的内核并在本机模糊它。这是最快的技术，但很有问题。如果模糊测试成功找到错误，您将崩溃机器，可能会丢失测试数据。应该避免切割我们坐的树枝。</p>
+<p><strong>“uml”</strong>：我们可以将内核配置为以<a href="http://user-mode-linux.sourceforge.net/" target="_blank" rel="noopener">用户模式Linux运行</a>。运行UML内核不需要任何权限。内核只运行用户空间进程。UML非常酷，但遗憾的是，它不支持KASAN，因此减少了查找内存损坏错误的可能性。最后，UML是一个非常神奇的特殊环境 - 在UML中发现的错误可能与真实环境无关。有趣的是，<a href="https://source.android.com/devices/architecture/kernel/network_tests" target="_blank" rel="noopener">Android network_tests框架</a>使用UML 。</p>
+<p><strong>“kvm”</strong>：我们可以使用kvm在虚拟化环境中运行我们的自定义内核。这就是我们要做的。</p>
+<p>在KVM环境中运行自定义内核的最简单方法之一是使用<a href="https://github.com/amluto/virtme" target="_blank" rel="noopener">“virtme”脚本</a>。有了它们，我们可以避免创建专用的磁盘映像或分区，只需共享主机文件系统。这就是我们运行代码的方式：</p>
+<pre class="line-numbers language-sh"><code class="language-sh">virtme-run \
+    --kimg bzImage \
+    --rw --pwd --memory 512M \
+    --script-sh "<what to run inside kvm>" <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<p>但坚持下去。我们忘记了为我们的模糊器准备输入语料库数据！</p>
+<h2 id="构建输入语料库"><a href="#构建输入语料库" class="headerlink" title="构建输入语料库"></a>构建输入语料库</h2><p>每个模糊器都需要精心设计的测试用例作为输入，以引导第一个突变。测试用例应该简短，并尽可能覆盖大部分代码。可悲的是 - 我对netlink一无所知。我们怎么不准备输入语料库…</p>
+<p>相反，我们可以要求AFL“弄清楚”哪些输入有意义。这就是<a href="https://lcamtuf.blogspot.com/2014/11/pulling-jpegs-out-of-thin-air.html" target="_blank" rel="noopener">Michał在2014年用JPEG</a>制作的，并且对他<a href="https://lcamtuf.blogspot.com/2014/11/pulling-jpegs-out-of-thin-air.html" target="_blank" rel="noopener">有用</a>。考虑到这一点，这是我们的输入语料库：</p>
+<pre class="line-numbers language-sh"><code class="language-sh">mkdir inp
+echo "hello world" > inp/01.txt<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p>有关如何编译和运行整个事情的说明都在我们的github上的<a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2019-07-kernel-fuzzing" target="_blank" rel="noopener">README.md中</a>。归结为：</p>
+<pre class="line-numbers language-sh"><code class="language-sh">virtme-run \
+    --kimg bzImage \
+    --rw --pwd --memory 512M \
+    --script-sh "./afl-fuzz -i inp -o out -- fuzznetlink" <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<p>通过此运行，您将看到熟悉的AFL状态屏幕：</p>
+<p><img src="1566885056721.png" alt></p>
+<h2 id="进一步说明"><a href="#进一步说明" class="headerlink" title="进一步说明"></a>进一步说明</h2><p>而已。现在你有了一个自定义的强化内核，运行一个基本的覆盖引导模糊器。所有KVM内部。</p>
+<p>值得努力吗？即使有这个基本的模糊器，也没有输入语料库，一两天后，<a href="https://lore.kernel.org/netdev/CAJPywTJWQ9ACrp0naDn0gikU4P5-xGcGrZ6ZOKUeeC3S-k9+MA@mail.gmail.com/T/#u" target="_blank" rel="noopener">模糊</a>器发现了一个有趣的代码路径：<a href="https://lore.kernel.org/netdev/CAJPywTJWQ9ACrp0naDn0gikU4P5-xGcGrZ6ZOKUeeC3S-k9+MA@mail.gmail.com/T/#u" target="_blank" rel="noopener">NEIGH：BUG，双定时器添加，状态为8</a>。使用更专业的模糊器，一些改进“稳定性”度量和一个体面的输入语料库，我们可以期待更好的结果。</p>
+<p>如果您想了解更多关于netlink套接字实际执行的内容，请参阅我的同事Jakub Sitnicki <a href="http://codecave.cc/multipath-routing-in-linux-part-1.html" target="_blank" rel="noopener">在Linux中的多路径路由</a>的博客文章<a href="http://codecave.cc/multipath-routing-in-linux-part-1.html" target="_blank" rel="noopener">- 第1部分</a>。然后在<a href="https://books.google.pl/books?redir_esc=y&hl=pl&id=96V4AgAAQBAJ&q=netlink#v=snippet&q=netlink&f=false" target="_blank" rel="noopener">Rami Rosen的Linux内核网络书中</a>有一篇很好的章节。</p>
+<p>在这篇博文中我们没有提到：</p>
 <ul>
-<li>失恋ing</li>
-<li>ACM退役</li>
-<li>顺利保研</li>
+<li>AFL shared_memory设置的详细信息</li>
+<li>执行AFL持久模式</li>
+<li>如何创建一个网络命名空间来隔离怪异的netlink命令的效果，并提高AFL得分的“稳定性”</li>
+<li>关于如何读取dmesg（/ dev / kmsg）以查找内核崩溃的技巧</li>
+<li>想要在KVM之外运行AFL，以获得速度和稳定性 - 目前在发现崩溃后测试不稳定</li>
 </ul>
-<p><strong>第一件事</strong>就不想过多回忆了，<strong>2014.12.13 ~ 2017.03.01</strong>，曲终人散。<br><img src="749826.jpg" alt><br>最后引用《我的少女时代》里的一句话吧。</p>
+<p>但是我们实现了我们的目标 - 我们针对内核建立了一个基本但仍然有用的模糊器。最重要的是：可以重复使用相同的机制来模糊Linux子系统的其他部分 - 从文件系统到bpf验证程序。</p>
+<p>我还学到了一个艰难的教训：调整模糊器是一项全职工作。正确的模糊测试绝对不是像启动它并无所事事地等待崩溃一样简单。总有一些东西需要改进，调整和重新实现。Mateusz Jurczyk在上述演讲开头的一句话引起了我的共鸣：</p>
 <blockquote>
-<p>每人都有一颗林真心，遇见是最美好的小幸运，谢谢你出现在我的青春里。</p>
+<p>“模糊很容易学，但很难掌握。”</p>
 </blockquote>
-<p><img src="1.jpg" alt><br><strong>第二件事</strong>其实也是黯淡退出吧，大三下开始课程繁忙，也就没怎么训练了，再加上暑假考驾照，于是乎就退役了。回顾三年来，从大一入学时电脑都没怎么碰过的小白，到现在算法也略有所知，也是付出过很大的努力吧，毕竟当年每天刷题，为了一个bug而熬夜到凌晨。最后也算是混了个水水的金牌，奖项不算耀眼。但最重要的是从这段经历中，学到了拼搏、坚持的一种精神，这对以后的研究生涯想必也有很大帮助。<br><img src="2.jpg" alt><br><strong>第三件事</strong>也是意料之中吧，没有什么波折。纠结了很多，虽然<strong>专业第一</strong>，但是最后还是选择保了本校。要问原因，也许是校园情怀，也许是导师人很好，也许是为了方便更早研究，也许就是懒吧。现在尘埃落定，靠人靠天不如靠自己，继续努力吧。<br><img src="3.jpg" alt></p>
-<p>过去的一年，学业未有很大长进，看着同学们整页的4.0绩点，心里倒也没有什么不平衡了。下学期保了研之后选了一门研究生的文本挖掘课，也马马虎虎读了几十篇论文，也算是对自然语言处理和深度学习入了个门，最后的presentation做的还算满意。</p>
-<h1 id="2018"><a href="#2018" class="headerlink" title="2018"></a>2018</h1><hr>
-<p>今年最重要的大事莫过于毕业论文了，因为以后要做的方向是句法分析，所以导师给我的毕业论文安排的就是《基于循环神经网络的成分句法分析》。虽然说是基于ACL2013的一篇论文改编的，但是目前为止，我还没有发现有人做和这个完全一样的。也许最后写的好的话可以直接发paper了。</p>
-<p>但是目前基本的框架还没完全搭建起来吧，代码还不是很熟练，现在只写了一个最基础的动态规划+RNN。最近有如下计划：</p>
-<ul>
-<li>准备试一下动态规划+LSTM。</li>
-<li>然后动态规划扩增一个维度，用来保存左右结点的head结点。</li>
-<li>如果这个写好了，就可以和我github找到的PCFG+CYK代码融合了，准备加上每个结点的POS。</li>
-<li>最后加入预训练词向量应该就基本完成了。</li>
-</ul>
-<p>希望能顺利毕业吧，前一段时间一直对一些实现细节有些困惑，代码还写错了，还以为理论错了。也不知道最后出来的结果会怎么样，希望能不错。</p>
-<p>生活方面，最近半年越来越懒了，极少出门，睡得晚，起的也晚。最近买了把尤克里里，也算是陶冶陶冶情操吧，不至于一直盯着电脑。现在也小有长进，能弹一点点了。</p>
-<p>现在能聊天的人越来越少了，QQ微信放那一天也不一定会有人来找，就算有人也多半是咨询问题的，等一个可以交心的人吧。有时我也想过，我是不是太像中央空调了，对所有人都这么有耐心，到头来却还是一个人，付出那么多最后还是一无所有。<br><img src="4.jpg" alt><br>最后还是祝自己2018年顺利吧，希望毕业顺利，研究生涯小有收获，最后等一个有缘人吧。</p>
-<blockquote>
-<p>我遇见谁，会有怎样的对白。<br>我等的人，她在多远的未来。</p>
-</blockquote>
+<p>快乐虫狩猎！</p>
 
             </div>
             <hr />
@@ -660,9 +783,9 @@
             <br/>
             <span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Text"
                   property="dct:title" rel="dct:type">
-                    《二零一七年终总结》
+                    《使用AFL对Linux内核Fuzzing的总结》
                 </span> 由
-            <a xmlns:cc="http://creativecommons.org/ns#" href="/2018/01/22/2017-conclusion/" property="cc:attributionName"
+            <a xmlns:cc="http://creativecommons.org/ns#" href="/2018/01/22/article-title/" property="cc:attributionName"
                rel="cc:attributionURL">
                 0xbird
             </a> 采用
@@ -703,7 +826,7 @@
         repo: '0xbird.github.io',
         owner: '0xbird',
         admin: "0xbird",
-        id: '2018/01/22/2017-conclusion/',
+        id: '2018/01/22/article-title/',
         distractionFreeMode: false  // Facebook-like distraction free mode
     });
 
@@ -724,10 +847,9 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fa fa-dot-circle-o"></i>&nbsp;本篇
-            </div>
+                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
                 <a href="/2018/01/22/2017-conclusion/">
                     <div class="card-image">
@@ -745,9 +867,9 @@
                         
                     </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2018-01-22
-                            </span>
+                        <span class="publish-date">
+                            <i class="fa fa-clock-o fa-fw icon-date"></i>2018-01-22
+                        </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
@@ -760,7 +882,6 @@
                         </span>
                     </div>
                 </div>
-
                 
                 <div class="card-action article-tags">
                     
@@ -776,7 +897,7 @@
         
         <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge right-badge text-color">
-                下一篇&nbsp;<i class="fa fa-chevron-right"></i>
+                本篇&nbsp;<i class="fa fa-dot-circle-o"></i>
             </div>
             <div class="card">
                 <a href="/2018/01/22/article-title/">
@@ -811,6 +932,7 @@
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
