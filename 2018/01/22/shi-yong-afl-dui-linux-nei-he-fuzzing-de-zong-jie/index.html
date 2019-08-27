@@ -611,7 +611,7 @@ echo "hello world" > inp/01.txt<span aria-hidden="true" class="line-numbers-rows
     --rw --pwd --memory 512M \
     --script-sh "./afl-fuzz -i inp -o out -- fuzznetlink" <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 <p>通过此运行，您将看到熟悉的AFL状态屏幕：</p>
-<p><img src="1566885056721.png" alt></p>
+<p><img src="/.top//1566885056721.png" alt></p>
 <h2 id="进一步说明"><a href="#进一步说明" class="headerlink" title="进一步说明"></a>进一步说明</h2><p>而已。现在你有了一个自定义的强化内核，运行一个基本的覆盖引导模糊器。所有KVM内部。</p>
 <p>值得努力吗？即使有这个基本的模糊器，也没有输入语料库，一两天后，<a href="https://lore.kernel.org/netdev/CAJPywTJWQ9ACrp0naDn0gikU4P5-xGcGrZ6ZOKUeeC3S-k9+MA@mail.gmail.com/T/#u" target="_blank" rel="noopener">模糊</a>器发现了一个有趣的代码路径：<a href="https://lore.kernel.org/netdev/CAJPywTJWQ9ACrp0naDn0gikU4P5-xGcGrZ6ZOKUeeC3S-k9+MA@mail.gmail.com/T/#u" target="_blank" rel="noopener">NEIGH：BUG，双定时器添加，状态为8</a>。使用更专业的模糊器，一些改进“稳定性”度量和一个体面的输入语料库，我们可以期待更好的结果。</p>
 <p>如果您想了解更多关于netlink套接字实际执行的内容，请参阅我的同事Jakub Sitnicki <a href="http://codecave.cc/multipath-routing-in-linux-part-1.html" target="_blank" rel="noopener">在Linux中的多路径路由</a>的博客文章<a href="http://codecave.cc/multipath-routing-in-linux-part-1.html" target="_blank" rel="noopener">- 第1部分</a>。然后在<a href="https://books.google.pl/books?redir_esc=y&hl=pl&id=96V4AgAAQBAJ&q=netlink#v=snippet&q=netlink&f=false" target="_blank" rel="noopener">Rami Rosen的Linux内核网络书中</a>有一篇很好的章节。</p>

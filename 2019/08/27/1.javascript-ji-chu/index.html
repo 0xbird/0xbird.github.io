@@ -572,7 +572,7 @@ var myNumberArray = [10,15,20];</code></pre><ul>
 </ul>
 <pre><code>var student = { name : &#39;Tom&#39;, age : 18 };</code></pre><h4 id="动态类型"><a href="#动态类型" class="headerlink" title="动态类型"></a>动态类型</h4><p>JavaScript 是一种“动态类型语言”，这意味着不同于其他一些语言(如 C、Java)，你不需要指定变量将包含什么数据类型（例如 number 或 string）,通通用 var 关键字声明就是了。比如如果你声明一个变量并给它一个带引号的值，浏览器就会知道它是一个字符串：</p>
 <pre><code>var myString = &#39;Hello&#39;;</code></pre><p>值得注意的是就是引号中是一个数字，它依然是 string 类型的。我们可以在控制台中通过 typeof 函数，来查看我们声明的变量是什么类型的。</p>
-<p><img src="1565971344000.png" alt></p>
+<p><img src="/2019/08/27/1/1565971344000.png" alt></p>
 <h4 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h4><p>单行注释：用来描述下面一个或多行代码的作用。单行注释快捷键：Ctrl + /</p>
 <pre><code>//这是一个变量
 var name = &quot;zhangsan&quot;;</code></pre><p>多行注释：用来注释多条代码。多行注释快捷键：Ctrl + Shift + /</p>
@@ -586,9 +586,9 @@ console.log(name, age);
 <li>双精度：是一种特定类型的浮点数，它们具有比标准浮点数更高的精度。</li>
 </ul>
 <p>注：我们这里作为了解就可以了。因为和其他语言不同的是，在 JavaScript 中，不管什么数字类型的通通用 var 声明就可以了，而且 JavaScript 中只有一个数据类型:Number。</p>
-<h4 id="算数运算符"><a href="#算数运算符" class="headerlink" title="算数运算符"></a>算数运算符</h4><p><img src="https://doc.shiyanlou.com/document-uid897174labid9222timestamp1547022268324.png/wm" alt="img"></p>
+<h4 id="算数运算符"><a href="#算数运算符" class="headerlink" title="算数运算符"></a>算数运算符</h4><p><img src="/2019/08/27/1/1566899363039.png" alt></p>
 <p>加减乘除的运算和我们平时所用的差不多，大家可以自行在控制台中尝试。这里需要提醒大家的是累加运算和累减运算的用法:</p>
-<p><img src="https://doc.shiyanlou.com/document-uid897174labid9222timestamp1547022963371.png/wm" alt="img"></p>
+<p><img src="/2019/08/27/1/1566899404800.png" alt="1566899404800"></p>
 <p>从上述的图片中可以看出我们不能将这些直接应用于一个数字，不是对值进行操作，而是为变量赋值一个新的更新值。num++ 其实是 num = num + 1 的省略写法。从图片上来看可能不好理解 num++ 和 ++num 的区别。我们来写一个例子：</p>
 <pre><code>var num1 = 3;
 var result1 = num1++;
@@ -599,7 +599,7 @@ var result2 = ++num2;
 console.log(result2);
 console.log(num2);
 </code></pre><p>最后控制台打印的数字为：3 4 5 5。这里我们也可以看出 num++ 和 ++num 的区别，前者是先赋值再自增，后者是先自增再赋值。同样的 num– 和 –num 也是一样的效果，大家可以自行尝试一下。</p>
-<h4 id="操作运算符"><a href="#操作运算符" class="headerlink" title="操作运算符"></a>操作运算符</h4><p><img src="https://doc.shiyanlou.com/document-uid897174labid9222timestamp1547024191664.png/wm" alt="img"></p>
+<h4 id="操作运算符"><a href="#操作运算符" class="headerlink" title="操作运算符"></a>操作运算符</h4><p><img src="/2019/08/27/1/1566899435300.png" alt="1566899435300"></p>
 <h4 id="比较运算符"><a href="#比较运算符" class="headerlink" title="比较运算符"></a>比较运算符</h4><p><img src="https://doc.shiyanlou.com/document-uid897174labid9222timestamp1547024508797.png/wm" alt="img"></p>
 <p>在控制台中输入这些示例，如果成立的话会返回 true 如果不成立的话则返回 false。</p>
 <h4 id="逻辑运算符"><a href="#逻辑运算符" class="headerlink" title="逻辑运算符"></a>逻辑运算符</h4><p><img src="https://doc.shiyanlou.com/document-uid18510labid147timestamp1515116985209.png/wm" alt="img"></p>
