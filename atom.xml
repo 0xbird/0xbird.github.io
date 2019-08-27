@@ -2,15 +2,15 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>0xbird&#39;Blog</title>
   
-  <subtitle>godweiyang</subtitle>
+  <subtitle>0xbirdpwn</subtitle>
   <link href="/atom.xml" rel="self"/>
   
-  <link href="https://godweiyang.com/"/>
+  <link href="https://0xbird.top/"/>
   <updated>2019-08-26T17:24:07.480Z</updated>
-  <id>https://godweiyang.com/</id>
+  <id>https://0xbird.top/</id>
   
   <author>
-    <name>韦阳</name>
+    <name>0xbird</name>
     
   </author>
   
@@ -18,8 +18,8 @@
   
   <entry>
     <title>article title</title>
-    <link href="https://godweiyang.com/2019/08/27/article-title/"/>
-    <id>https://godweiyang.com/2019/08/27/article-title/</id>
+    <link href="https://0xbird.top/2019/08/27/article-title/"/>
+    <id>https://0xbird.top/2019/08/27/article-title/</id>
     <published>2019-08-26T17:24:07.000Z</published>
     <updated>2019-08-26T17:24:07.480Z</updated>
     
@@ -32,8 +32,8 @@
   
   <entry>
     <title>二零一七年终总结</title>
-    <link href="https://godweiyang.com/2018/01/22/2017-conclusion/"/>
-    <id>https://godweiyang.com/2018/01/22/2017-conclusion/</id>
+    <link href="https://0xbird.top/2018/01/22/2017-conclusion/"/>
+    <id>https://0xbird.top/2018/01/22/2017-conclusion/</id>
     <published>2018-01-22T04:32:09.000Z</published>
     <updated>2019-08-26T16:03:29.283Z</updated>
     
@@ -49,17 +49,17 @@
     
     </summary>
     
-      <category term="随笔" scheme="https://godweiyang.com/categories/%E9%9A%8F%E7%AC%94/"/>
+      <category term="随笔" scheme="https://0xbird.top/categories/%E9%9A%8F%E7%AC%94/"/>
     
     
-      <category term="随笔" scheme="https://godweiyang.com/tags/%E9%9A%8F%E7%AC%94/"/>
+      <category term="随笔" scheme="https://0xbird.top/tags/%E9%9A%8F%E7%AC%94/"/>
     
   </entry>
   
   <entry>
     <title>python基础</title>
-    <link href="https://godweiyang.com/2018/01/22/aaaaaaaaaaaaaaa/"/>
-    <id>https://godweiyang.com/2018/01/22/aaaaaaaaaaaaaaa/</id>
+    <link href="https://0xbird.top/2018/01/22/aaaaaaaaaaaaaaa/"/>
+    <id>https://0xbird.top/2018/01/22/aaaaaaaaaaaaaaa/</id>
     <published>2018-01-22T04:32:09.000Z</published>
     <updated>2019-08-26T16:54:08.055Z</updated>
     
@@ -75,10 +75,10 @@
     
     </summary>
     
-      <category term="python3" scheme="https://godweiyang.com/categories/python3/"/>
+      <category term="python3" scheme="https://0xbird.top/categories/python3/"/>
     
     
-      <category term="python" scheme="https://godweiyang.com/tags/python/"/>
+      <category term="python" scheme="https://0xbird.top/tags/python/"/>
     
   </entry>
   
