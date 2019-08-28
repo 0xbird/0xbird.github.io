@@ -46,10 +46,38 @@
   
   <entry>
     <title>使用AFL对Linux内核Fuzzing的总结</title>
+    <link href="https://0xbird.top/2018/01/22/article-title/"/>
+    <id>https://0xbird.top/2018/01/22/article-title/</id>
+    <published>2018-01-22T04:32:09.000Z</published>
+    <updated>2019-08-27T10:39:38.903Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;模糊测试是一种很好的漏洞挖掘技术，Fuzzer将半随机输入喂到到测试程序，目的是找到触发错误的输入。模糊测试在查找C或C
+        
+      
+    
+    </summary>
+    
+      <category term="漏洞挖掘" scheme="https://0xbird.top/categories/%E6%BC%8F%E6%B4%9E%E6%8C%96%E6%8E%98/"/>
+    
+      <category term="Vul" scheme="https://0xbird.top/categories/%E6%BC%8F%E6%B4%9E%E6%8C%96%E6%8E%98/Vul/"/>
+    
+    
+      <category term="Fuzzing" scheme="https://0xbird.top/tags/Fuzzing/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>AFL Fuzzing</title>
     <link href="https://0xbird.top/2018/01/22/shi-yong-afl-dui-linux-nei-he-fuzzing-de-zong-jie/"/>
     <id>https://0xbird.top/2018/01/22/shi-yong-afl-dui-linux-nei-he-fuzzing-de-zong-jie/</id>
     <published>2018-01-22T04:32:09.000Z</published>
-    <updated>2019-08-27T07:20:01.887Z</updated>
+    <updated>2019-08-28T05:36:35.383Z</updated>
     
     <summary type="html">
     
