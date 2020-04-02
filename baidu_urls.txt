@@ -1,3 +1,5 @@
+https://0xbird.top/2020/04/02/apache-tomcat-ghostcat-lou-dong-xiang-xi-fen-xi-cve-2020-1938/
 https://0xbird.top/2020/04/02/windows-rdp-xie-yi-dui-yi-chu-lou-dong-fen-xi-cve-2019-1181-cve-2019-1182/
+https://0xbird.top/2019/12/02/pppd-zhong-huan-chong-qu-yi-chu-lou-dong-diao-shi-fen-xi-cve-2020-8597/
 https://0xbird.top/2019/08/27/javascript-ji-chu-xue-xi-zong-jie/
 https://0xbird.top/2018/01/22/shi-yong-afl-dui-linux-nei-he-fuzzing-de-zong-jie/

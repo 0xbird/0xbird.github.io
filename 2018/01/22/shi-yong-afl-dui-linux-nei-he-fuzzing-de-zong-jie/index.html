@@ -599,7 +599,7 @@ r <span class="token operator">=</span> <span class="token function">sendmsg</sp
 <pre class="line-numbers language-sh"><code class="language-sh">virtme-run \
     --kimg bzImage \
     --rw --pwd --memory 512M \
-    --script-sh "<what to run inside kvm>" <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+    --script-sh "<what to run inside kvm>" <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></what></code></pre>
 <p>但坚持下去。我们忘记了为我们的模糊器准备输入语料库数据！</p>
 <h2 id="构建输入语料库"><a href="#构建输入语料库" class="headerlink" title="构建输入语料库"></a>构建输入语料库</h2><p>每个模糊器都需要精心设计的测试用例作为输入，以引导第一个突变。测试用例应该简短，并尽可能覆盖大部分代码。可悲的是 - 我对netlink一无所知。我们怎么不准备输入语料库…</p>
 <p>相反，我们可以要求AFL“弄清楚”哪些输入有意义。这就是<a href="https://lcamtuf.blogspot.com/2014/11/pulling-jpegs-out-of-thin-air.html" target="_blank" rel="noopener">Michał在2014年用JPEG</a>制作的，并且对他<a href="https://lcamtuf.blogspot.com/2014/11/pulling-jpegs-out-of-thin-air.html" target="_blank" rel="noopener">有用</a>。考虑到这一点，这是我们的输入语料库：</p>
@@ -1110,7 +1110,7 @@ null &amp;
 
             
             &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-            <span class="white-color">10k</span>
+            <span class="white-color">13.4k</span>
             
 
             <br>
