@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://0xbird.top/"/>
-  <updated>2020-04-02T17:15:06.243Z</updated>
+  <updated>2020-04-02T17:45:27.802Z</updated>
   <id>https://0xbird.top/</id>
   
   <author>
@@ -20,8 +20,8 @@
     <title>Avira VPN 本地提权漏洞分析</title>
     <link href="https://0xbird.top/2020/04/03/avira-vpn-ben-di-ti-quan-lou-dong-fen-xi/"/>
     <id>https://0xbird.top/2020/04/03/avira-vpn-ben-di-ti-quan-lou-dong-fen-xi/</id>
-    <published>2020-04-02T17:13:53.000Z</published>
-    <updated>2020-04-02T17:15:06.243Z</updated>
+    <published>2020-04-02T17:44:04.000Z</published>
+    <updated>2020-04-02T17:45:27.802Z</updated>
     
     <summary type="html">
     
@@ -34,6 +34,8 @@
       
     
     </summary>
+    
+      <category term="VPN" scheme="https://0xbird.top/categories/VPN/"/>
     
     
       <category term="漏洞分析" scheme="https://0xbird.top/tags/%E6%BC%8F%E6%B4%9E%E5%88%86%E6%9E%90/"/>
