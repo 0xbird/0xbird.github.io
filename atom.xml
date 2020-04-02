@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://0xbird.top/"/>
-  <updated>2020-04-02T07:35:10.765Z</updated>
+  <updated>2020-04-02T08:12:37.792Z</updated>
   <id>https://0xbird.top/</id>
   
   <author>
@@ -17,11 +17,11 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>CVE-2019-1181 &amp; CVE-2019-1182 ：Windows RDP 协议堆溢出漏洞分析</title>
-    <link href="https://0xbird.top/2020/04/02/cve-2019-1181-cve-2019-1182-windows-rdp-xie-yi-dui-yi-chu-lou-dong-fen-xi/"/>
-    <id>https://0xbird.top/2020/04/02/cve-2019-1181-cve-2019-1182-windows-rdp-xie-yi-dui-yi-chu-lou-dong-fen-xi/</id>
-    <published>2020-04-02T07:34:09.000Z</published>
-    <updated>2020-04-02T07:35:10.765Z</updated>
+    <title>Windows RDP 协议堆溢出漏洞分析（CVE-2019-1181 &amp; CVE-2019-1182）</title>
+    <link href="https://0xbird.top/2020/04/02/windows-rdp-xie-yi-dui-yi-chu-lou-dong-fen-xi-cve-2019-1181-cve-2019-1182/"/>
+    <id>https://0xbird.top/2020/04/02/windows-rdp-xie-yi-dui-yi-chu-lou-dong-fen-xi-cve-2019-1181-cve-2019-1182/</id>
+    <published>2020-04-02T08:03:52.000Z</published>
+    <updated>2020-04-02T08:12:37.792Z</updated>
     
     <summary type="html">
     
@@ -63,6 +63,28 @@
     
     </summary>
     
+    
+  </entry>
+  
+  <entry>
+    <title>Javascript基础学习总结</title>
+    <link href="https://0xbird.top/2019/08/27/javascript-ji-chu-xue-xi-zong-jie/"/>
+    <id>https://0xbird.top/2019/08/27/javascript-ji-chu-xue-xi-zong-jie/</id>
+    <published>2019-08-27T08:36:03.000Z</published>
+    <updated>2020-04-02T08:14:36.656Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;简介&quot;&gt;&lt;a href=&quot;#简介&quot; class=&quot;headerlink&quot; title=&quot;简介&quot;&gt;&lt;/a&gt;简介&lt;/h2&gt;&lt;p&gt;JavaScript 是一种脚本语言，学一种编程语言，首先就要从这种语言的基础语法入手。本节我们就将对 JavaScript
+        
+      
+    
+    </summary>
+    
       <category term="Javascript" scheme="https://0xbird.top/categories/Javascript/"/>
     
     
@@ -73,37 +95,9 @@
   </entry>
   
   <entry>
-    <title>AFL Fuzzing</title>
-    <link href="https://0xbird.top/2018/01/22/afl-fuzzing/"/>
-    <id>https://0xbird.top/2018/01/22/afl-fuzzing/</id>
-    <published>2018-01-22T04:32:09.000Z</published>
-    <updated>2019-08-28T05:36:35.383Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;模糊测试是一种很好的漏洞挖掘技术，Fuzzer将半随机输入喂到到测试程序，目的是找到触发错误的输入。模糊测试在查找C或C
-        
-      
-    
-    </summary>
-    
-      <category term="漏洞挖掘" scheme="https://0xbird.top/categories/%E6%BC%8F%E6%B4%9E%E6%8C%96%E6%8E%98/"/>
-    
-      <category term="Vul" scheme="https://0xbird.top/categories/%E6%BC%8F%E6%B4%9E%E6%8C%96%E6%8E%98/Vul/"/>
-    
-    
-      <category term="Fuzzing" scheme="https://0xbird.top/tags/Fuzzing/"/>
-    
-  </entry>
-  
-  <entry>
     <title>使用AFL对Linux内核Fuzzing的总结</title>
-    <link href="https://0xbird.top/2018/01/22/article-title/"/>
-    <id>https://0xbird.top/2018/01/22/article-title/</id>
+    <link href="https://0xbird.top/2018/01/22/shi-yong-afl-dui-linux-nei-he-fuzzing-de-zong-jie/"/>
+    <id>https://0xbird.top/2018/01/22/shi-yong-afl-dui-linux-nei-he-fuzzing-de-zong-jie/</id>
     <published>2018-01-22T04:32:09.000Z</published>
     <updated>2019-08-27T10:39:38.903Z</updated>
     
