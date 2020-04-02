@@ -476,7 +476,7 @@
 <p>通常情况下，建议选择一个众所周知但很少探索的库，这个库在解析时很重要。历史上，像libjpeg，libpng和libyaml这样的东西都是完美的目标。如今找到一个好目标更难 - 一切似乎都已经被模糊化了。这是好事！我猜软件越来越好了！我没有选择用户空间目标，而是选择了Linux内核netlink机器。</p>
 <p>Netlink是一个Linux内核工具，它用于配置网络接口，IP地址，路由表等。这是一个很好的fuzzing 目标：它是内核的一个小模块，并且生成畸形有效消息相对比较容易。最重要的是，我们可以在此过程中学到很多关于Linux内核的知识。</p>
 <p>在这篇文章中，我将使用AFL模糊器，将netlink shim程序与自定义Linux内核相对应，所有这些都在KVM虚拟机中运行。</p>
-<h3 id="以前的技术支持"><a href="#以前的技术支持" class="headerlink" title="以前的技术支持"></a>以前的技术支持</h3><p>我们将要使用的技术被称为“覆盖引导模糊测试”。有很多以前的文献：</p>
+<h2 id="技术参考"><a href="#技术参考" class="headerlink" title="技术参考"></a>技术参考</h2><p>我们将要使用的技术被称为“覆盖引导模糊测试”。有很多以前的文献：</p>
 <ul>
 <li>Dan Guido <a href="https://blog.trailofbits.com/2017/02/16/the-smart-fuzzer-revolution/" target="_blank" rel="noopener">的智能模糊革命</a>，以及<a href="https://lwn.net/Articles/677764/" target="_blank" rel="noopener">LWN</a>关于它的<a href="https://lwn.net/Articles/677764/" target="_blank" rel="noopener">文章</a></li>
 <li>Mateusz“j00ru”Jurczyk的<a href="https://j00ru.vexillium.org/talks/blackhat-eu-effective-file-format-fuzzing-thoughts-techniques-and-results/" target="_blank" rel="noopener">有效文件格式模糊</a>测试</li>
@@ -496,7 +496,7 @@
 <li><a href="http://lcamtuf.coredump.cx/afl/technical_details.txt" target="_blank" rel="noopener">技术白皮书</a></li>
 <li><a href="http://lcamtuf.coredump.cx/afl/README.txt" target="_blank" rel="noopener">自述</a></li>
 </ul>
-<h3 id="覆盖引导的模糊测试"><a href="#覆盖引导的模糊测试" class="headerlink" title="覆盖引导的模糊测试"></a>覆盖引导的模糊测试</h3><p>覆盖引导的模糊测试基于反馈回路的原理：</p>
+<h2 id="覆盖引导的模糊测试"><a href="#覆盖引导的模糊测试" class="headerlink" title="覆盖引导的模糊测试"></a>覆盖引导的模糊测试</h2><p>覆盖引导的模糊测试基于反馈回路的原理：</p>
 <ul>
 <li>模糊测试选择最有希望的测试用例</li>
 <li>模糊测试将测试变为大量新的测试用例</li>
@@ -506,7 +506,7 @@
 <p>例如，假设输入测试是“hello”。Fuzzer可能会将其变为多种测试，例如：“hEllo”（位翻转），“hXello”（字节插入），“hllo”（字节删除）。如果这些测试中的任何一个将产生有趣的代码覆盖，那么它将被优先化并用作下一次测试的基础。</p>
 <p>有关如何完成突变以及如何有效地比较数千个程序运行的代码覆盖率报告的细节是模糊测试的秘诀，阅读<a href="http://lcamtuf.coredump.cx/afl/technical_details.txt" target="_blank" rel="noopener">AFL的技术白皮书</a>，可以了解更多细节。</p>
 <p>通常，在使用AFL时，我们需要检测目标代码，以便以AFL兼容的方式报告覆盖范围。但我们想要Fuzzing 内核！我们不能只用“afl-gcc”重新编译它！。我们将准备一个二进制文件，让AFL认为它是用它的工具编译的。这个二进制文件将报告从内核中提取的代码覆盖率。</p>
-<h3 id="内核代码覆盖率"><a href="#内核代码覆盖率" class="headerlink" title="内核代码覆盖率"></a>内核代码覆盖率</h3><p>内核至少有两个内置的覆盖机制–GCOV和KCOV：</p>
+<h2 id="内核代码覆盖率"><a href="#内核代码覆盖率" class="headerlink" title="内核代码覆盖率"></a>内核代码覆盖率</h2><p>内核至少有两个内置的覆盖机制–GCOV和KCOV：</p>
 <ul>
 <li><a href="https://www.kernel.org/doc/html/v4.15/dev-tools/gcov.html" target="_blank" rel="noopener">将gcov与Linux内核一起使用</a></li>
 <li><a href="https://www.kernel.org/doc/html/latest/dev-tools/kcov.html" target="_blank" rel="noopener">KCOV：模糊测试的代码覆盖率</a></li>
@@ -611,8 +611,8 @@ echo "hello world" > inp/01.txt<span aria-hidden="true" class="line-numbers-rows
     --rw --pwd --memory 512M \
     --script-sh "./afl-fuzz -i inp -o out -- fuzznetlink" <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 <p>通过此运行，您将看到熟悉的AFL状态截图：</p>
-<p><img src="/.top//1585819948268.png" alt="1585819948268"></p>
-<h2 id="进一步说明"><a href="#进一步说明" class="headerlink" title="进一步说明"></a>进一步说明</h2><p>而已。现在你有了一个自定义的强化内核，运行一个基本的覆盖引导模糊器。所有KVM内部。</p>
+<p><a href="http://q85n97zux.bkt.clouddn.com/1.png" target="_blank" rel="noopener">http://q85n97zux.bkt.clouddn.com/1.png</a></p>
+<h2 id="研究总结"><a href="#研究总结" class="headerlink" title="研究总结"></a>研究总结</h2><p>而已。现在你有了一个自定义的强化内核，运行一个基本的覆盖引导模糊器。所有KVM内部。</p>
 <p>值得努力吗？即使有这个基本的模糊器，也没有输入语料库，一两天后，<a href="https://lore.kernel.org/netdev/CAJPywTJWQ9ACrp0naDn0gikU4P5-xGcGrZ6ZOKUeeC3S-k9+MA@mail.gmail.com/T/#u" target="_blank" rel="noopener">模糊</a>器发现了一个有趣的代码路径：<a href="https://lore.kernel.org/netdev/CAJPywTJWQ9ACrp0naDn0gikU4P5-xGcGrZ6ZOKUeeC3S-k9+MA@mail.gmail.com/T/#u" target="_blank" rel="noopener">NEIGH：BUG，双定时器添加，状态为8</a>。使用更专业的模糊器，一些改进“稳定性”度量和一个体面的输入语料库，我们可以期待更好的结果。</p>
 <p>如果您想了解更多关于netlink套接字实际执行的内容，请参阅我的同事Jakub Sitnicki <a href="http://codecave.cc/multipath-routing-in-linux-part-1.html" target="_blank" rel="noopener">在Linux中的多路径路由</a>的博客文章<a href="http://codecave.cc/multipath-routing-in-linux-part-1.html" target="_blank" rel="noopener">- 第1部分</a>。然后在<a href="https://books.google.pl/books?redir_esc=y&hl=pl&id=96V4AgAAQBAJ&q=netlink#v=snippet&q=netlink&f=false" target="_blank" rel="noopener">Rami Rosen的Linux内核网络书中</a>有一篇很好的章节。</p>
 <p>在这篇博文中我们没有提到：</p>
@@ -1110,7 +1110,7 @@ null &amp;
 
             
             &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-            <span class="white-color">10k</span>
+            <span class="white-color">10.1k</span>
             
 
             <br>
