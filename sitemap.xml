@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://0xbird.top/friends/index.html</loc>
+    
+    <lastmod>2020-04-02T10:36:20.709Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://0xbird.top/contact/index.html</loc>
+    
+    <lastmod>2020-04-02T10:31:33.588Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://0xbird.top/2018/01/22/shi-yong-afl-dui-linux-nei-he-fuzzing-de-zong-jie/</loc>
     
     <lastmod>2020-04-02T10:11:59.072Z</lastmod>
@@ -23,23 +37,9 @@
   </url>
   
   <url>
-    <loc>https://0xbird.top/friends/index.html</loc>
-    
-    <lastmod>2019-08-27T08:28:41.286Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://0xbird.top/about/index.html</loc>
     
     <lastmod>2019-08-27T05:41:27.668Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://0xbird.top/contact/index.html</loc>
-    
-    <lastmod>2019-08-26T17:12:05.049Z</lastmod>
     
   </url>
   
