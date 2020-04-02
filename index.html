@@ -465,6 +465,37 @@ $(function () {
                     
 
                     
+                    
+
+<link rel="stylesheet" href="/libs/aplayer/APlayer.min.css">
+<div class="music-player">
+    
+    <div class="row">
+        <div class="col l8 offset-l2 m10 offset-m1 s12">
+            <div id="aplayer" class="music"></div>
+        </div>
+    </div>
+</div>
+
+<script src="/libs/aplayer/APlayer.min.js"></script>
+<script>
+$(function () {
+    new APlayer({
+        container: document.getElementById('aplayer'),
+        fixed: 'false' === 'true',
+        autoplay: 'true' === 'true',
+        theme: '#542674',
+        loop: 'all',
+        order: 'list',
+        preload: 'auto',
+        volume: Number('0.7'),
+        listFolded: 'false' === 'true',
+        listMaxHeight: '',
+        audio: JSON.parse('[{"name":"你要跳舞吗","artist":"新裤子","url":"/medias/music/niyaotiaowuma.mp3","cover":"/medias/music/avatars/yequ.jpg"},{"name":"火车驶向云外，梦安魂于九霄 ","artist":"刺猬乐队","url":"/medias/music/huocheshixangyunwai.mp3","cover":"/medias/music/avatars/yiluxiangbei.jpg"},{"name":"Bye Bye ","artist":"旅行团乐队","url":"/medias/music/ByeBye.mp3","cover":"/medias/music/avatars/tiantangdemogui.jpg"},{"name":"夜曲","artist":"周杰伦","url":"/medias/music/yequ.mp3","cover":"/medias/music/avatars/daoshu.jpg"}]')
+    });
+});
+</script>
+                    
 
                     
 
