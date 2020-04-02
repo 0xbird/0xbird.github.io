@@ -31,33 +31,6 @@
     
     
     <entry>
-      <title>CVE-2019-1181 &amp; CVE-2019-1182 ：Windows RDP 协议堆溢出漏洞分析</title>
-      <link href="/2020/04/02/cve-2019-1181-cve-2019-1182-windows-rdp-xie-yi-dui-yi-chu-lou-dong-fen-xi/"/>
-      <url>/2020/04/02/cve-2019-1181-cve-2019-1182-windows-rdp-xie-yi-dui-yi-chu-lou-dong-fen-xi/</url>
-      
-        <content type="html"><![CDATA[<p>2019年8月，微软公布了一系列RDP漏洞的补丁更新，其中两个是可蠕虫的RDP漏洞，从Windows 7到Windows 10，漏洞CVE-2019-1181和CVE-2019-1182会影响这之间的所有操作系统。</p><p>RDP客户端和服务器中都存在易受攻击的代码，因此可以在任一方进行漏洞利用。</p><h3 id="0x01-补丁比较"><a href="#0x01-补丁比较" class="headerlink" title="0x01 补丁比较"></a>0x01 补丁比较</h3><p><a href="https://www.malwaretech.com/wp-content/uploads/2019/08/BinDiff.png" target="_blank" rel="noopener"><img src="https://www.malwaretech.com/wp-content/uploads/2019/08/BinDiff.png" alt="img"></a>BinDiff下分析RDPCoreTS.dll（在Windows 7上的RDP相关文件）。</p><p>从以前分析RDP的经验来看，DecodeFormatData和SendFormatDataRequest函数只能是在身份验证后才可调用，修复后仅保留解压缩功能。</p><p><a href="https://www.malwaretech.com/wp-content/uploads/2019/08/CodeComparison.png" target="_blank" rel="noopener"><img src="https://www.malwaretech.com/wp-content/uploads/2019/08/CodeComparison.png" alt="img"></a>未修补和修补丁的解压缩功能之间的比较。</p><p>原始代码（左）有些混乱，因为它已被优化为了一个if语句，补丁代码（右）也有些混乱，并且具有一些附加的验证。</p><p>第24行添加了代码，用于检查v11 + 0x2000是否小于v11。如果条件为真，则会设置一个错误代码，随后将导致函数中止。</p><p>如何将0x2000添加到整数使其比以前更小？答案是：通过整数溢出漏洞。</p><p>无符号整数是4个字节，可以保存0到0xFFFFFFFF之间的任何值（4,294,967,295‬）。如果整数增加到超过最大值，则循环到零。因此，如果v11为0xFFFFFFFF，则向其添加0x2000将导致最终值0x1FFF，该值小于原始值。</p><p>v11用作通过“ new”运算符执行的堆分配的大小，这里的假设是，如果我们可以溢出v11，它将导致分配的大小小于解压缩的数据，从而导致堆溢出。</p><h3 id="0x03-动态调试"><a href="#0x03-动态调试" class="headerlink" title="0x03  动态调试"></a>0x03  动态调试</h3><p>为了更好地理解如何利用整数溢出，我需要知道我控制的值以及如何调用易受攻击的函数。为此，我对DecompressUnchopper :: DecompressUnchopper（DecompressUnchopper类的初始化函数）进行了堆栈回溯，找到利用此类的函数：CRdpDynVCMgr :: HandleIncomingDvcData。</p><p>从我以前对RDP的分析，我知道DynVC是“ Dynamic Virtual Channel”的缩写，DVC接口允许客户端和服务器上的模块之间进行通信，并支持原始数据和压缩数据，发送压缩数据可能会破坏易受攻击的“解压缩”功能。</p><p>我已经编写了用于利用BlueKeep的自定义RDP客户端，我添加了代码以打开DVC通道并发送一些测试数据。</p><p><a href="https://www.malwaretech.com/wp-content/uploads/2019/08/SendDvcData.png" target="_blank" rel="noopener"><img src="https://www.malwaretech.com/wp-content/uploads/2019/08/SendDvcData.png" alt="img"></a></p><p>将字符串“ MalwareTech123”发送到DVC通道。</p><p>将调试器附加到RDP服务器进程后，我在DecompressUnchopper :: Decompress上设置了一个断点并运行了我的代码。</p><p><a href="https://www.malwaretech.com/wp-content/uploads/2019/08/DecompressBreakpoint.png" target="_blank" rel="noopener"><img src="https://www.malwaretech.com/wp-content/uploads/2019/08/DecompressBreakpoint.png" alt="img"></a>DecompressUnchopper :: Decompress上的断点。</p><p>rdx（第二个参数）是我发送的测试数据，而r8（第三个参数）是数据长度，现在知道了函数参数，便可以清理反编译的代码了。</p><p><a href="https://www.malwaretech.com/wp-content/uploads/2019/08/DecompressFunction-1.png" target="_blank" rel="noopener"><img src="https://www.malwaretech.com/wp-content/uploads/2019/08/DecompressFunction-1.png" alt="img"></a></p><p>清理后的代码。</p><p>可以触发崩溃。</p><h3 id="0x03-堆溢出分析"><a href="#0x03-堆溢出分析" class="headerlink" title="0x03  堆溢出分析"></a>0x03  堆溢出分析</h3><p>为了通过使RDP服务器崩溃来测试漏洞，我制作了一个恶意DVC数据包。</p><p><a href="https://www.malwaretech.com/wp-content/uploads/2019/08/SendDvcCrash.png" target="_blank" rel="noopener"><img src="https://www.malwaretech.com/wp-content/uploads/2019/08/SendDvcCrash.png" alt="img"></a></p><p>构建恶意DVC数据包。</p><p>我将uncompressedSize字段设置为1 – 0x2000（0xFFFFE001‬），以便在添加0x2000时它将循环到1，然后将压缩数据设置为字母’A’重复0x200次，这将导致堆缓冲区被0x1FF字节溢出。</p><p>![1584334166127](CVE-2019-1181 &amp; CVE-2019-1182 ：Windows RDP 协议堆溢出漏洞分析.assets/1584334166127.png)</p><p>![1584334189968](CVE-2019-1181 &amp; CVE-2019-1182 ：Windows RDP 协议堆溢出漏洞分析.assets/1584334189968.png)</p><p>现在我可以将任意大小的任意数据写入相邻的堆分配了，该漏洞之所以严重，是因为对象实例存储在同一堆中，从而有可能覆盖它们。</p><p>例如，我更改了对象的VTable指针，以便应用程序通过地址0x1337133713371337执行ptr调用。</p><p><a href="https://www.malwaretech.com/wp-content/uploads/2019/08/VTableCall.png" target="_blank" rel="noopener"><img src="https://www.malwaretech.com/wp-content/uploads/2019/08/VTableCall.png" alt="img"></a></p>]]></content>
-      
-      
-      <categories>
-          
-          <category> RDP </category>
-          
-          <category> Vul </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> 漏洞分析 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>Javascript基础学习总结</title>
       <link href="/2019/08/27/javascript-ji-chu-xue-xi-zong-jie/"/>
       <url>/2019/08/27/javascript-ji-chu-xue-xi-zong-jie/</url>
