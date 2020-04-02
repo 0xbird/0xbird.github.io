@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://0xbird.top/2020/04/02/cve-2019-1181-cve-2019-1182-windows-rdp-xie-yi-dui-yi-chu-lou-dong-fen-xi/</loc>
+    
+    <lastmod>2020-04-02T08:19:24.595Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://0xbird.top/2019/08/27/javascript-ji-chu-xue-xi-zong-jie/</loc>
     
     <lastmod>2020-04-02T08:14:36.656Z</lastmod>
@@ -19,13 +26,6 @@
     <loc>https://0xbird.top/2018/01/22/shi-yong-afl-dui-linux-nei-he-fuzzing-de-zong-jie/</loc>
     
     <lastmod>2019-08-27T10:39:38.903Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://0xbird.top/2019/08/27/1.javascript-ji-chu/</loc>
-    
-    <lastmod>2019-08-27T10:23:53.198Z</lastmod>
     
   </url>
   
