@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://0xbird.top/"/>
-  <updated>2019-08-27T10:23:53.198Z</updated>
+  <updated>2020-04-02T07:35:10.765Z</updated>
   <id>https://0xbird.top/</id>
   
   <author>
@@ -15,6 +15,34 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>CVE-2019-1181 &amp; CVE-2019-1182 ：Windows RDP 协议堆溢出漏洞分析</title>
+    <link href="https://0xbird.top/2020/04/02/cve-2019-1181-cve-2019-1182-windows-rdp-xie-yi-dui-yi-chu-lou-dong-fen-xi/"/>
+    <id>https://0xbird.top/2020/04/02/cve-2019-1181-cve-2019-1182-windows-rdp-xie-yi-dui-yi-chu-lou-dong-fen-xi/</id>
+    <published>2020-04-02T07:34:09.000Z</published>
+    <updated>2020-04-02T07:35:10.765Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;2019年8月，微软公布了一系列RDP漏洞的补丁更新，其中两个是可蠕虫的RDP漏洞，从Windows 7到Windows
+        
+      
+    
+    </summary>
+    
+      <category term="RDP" scheme="https://0xbird.top/categories/RDP/"/>
+    
+      <category term="Vul" scheme="https://0xbird.top/categories/RDP/Vul/"/>
+    
+    
+      <category term="漏洞分析" scheme="https://0xbird.top/tags/%E6%BC%8F%E6%B4%9E%E5%88%86%E6%9E%90/"/>
+    
+  </entry>
   
   <entry>
     <title>1.Javascript 基础</title>
@@ -45,11 +73,11 @@
   </entry>
   
   <entry>
-    <title>使用AFL对Linux内核Fuzzing的总结</title>
-    <link href="https://0xbird.top/2018/01/22/article-title/"/>
-    <id>https://0xbird.top/2018/01/22/article-title/</id>
+    <title>AFL Fuzzing</title>
+    <link href="https://0xbird.top/2018/01/22/afl-fuzzing/"/>
+    <id>https://0xbird.top/2018/01/22/afl-fuzzing/</id>
     <published>2018-01-22T04:32:09.000Z</published>
-    <updated>2019-08-27T10:39:38.903Z</updated>
+    <updated>2019-08-28T05:36:35.383Z</updated>
     
     <summary type="html">
     
@@ -73,11 +101,11 @@
   </entry>
   
   <entry>
-    <title>AFL Fuzzing</title>
-    <link href="https://0xbird.top/2018/01/22/shi-yong-afl-dui-linux-nei-he-fuzzing-de-zong-jie/"/>
-    <id>https://0xbird.top/2018/01/22/shi-yong-afl-dui-linux-nei-he-fuzzing-de-zong-jie/</id>
+    <title>使用AFL对Linux内核Fuzzing的总结</title>
+    <link href="https://0xbird.top/2018/01/22/article-title/"/>
+    <id>https://0xbird.top/2018/01/22/article-title/</id>
     <published>2018-01-22T04:32:09.000Z</published>
-    <updated>2019-08-28T05:36:35.383Z</updated>
+    <updated>2019-08-27T10:39:38.903Z</updated>
     
     <summary type="html">
     
